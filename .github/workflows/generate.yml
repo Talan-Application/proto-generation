@@ -6,6 +6,8 @@ on:
 jobs:
     generate:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
         steps:
             - name: Install Go
               uses: actions/setup-go@v4
@@ -37,7 +39,7 @@ jobs:
 
             - name: Clone Generator Repository
               run: |
-                  git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/Talan-Application/proto-generation.git out
+                  git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Talan-Application/proto-generation.git out
 
             - name: Create go.mod in generated repo
               run: |
