@@ -501,6 +501,936 @@ func (x *DeleteQuizResponse) GetMessage() string {
 	return ""
 }
 
+// Question messages
+type CreateQuestionRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	QuizId         int64                  `protobuf:"varint,1,opt,name=quiz_id,json=quizId,proto3" json:"quiz_id,omitempty"`
+	Text           string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Context        string                 `protobuf:"bytes,3,opt,name=context,proto3" json:"context,omitempty"`
+	VideoAnswerUrl string                 `protobuf:"bytes,4,opt,name=video_answer_url,json=videoAnswerUrl,proto3" json:"video_answer_url,omitempty"`
+	Order          int64                  `protobuf:"varint,5,opt,name=order,proto3" json:"order,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateQuestionRequest) Reset() {
+	*x = CreateQuestionRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateQuestionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateQuestionRequest) ProtoMessage() {}
+
+func (x *CreateQuestionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateQuestionRequest.ProtoReflect.Descriptor instead.
+func (*CreateQuestionRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *CreateQuestionRequest) GetQuizId() int64 {
+	if x != nil {
+		return x.QuizId
+	}
+	return 0
+}
+
+func (x *CreateQuestionRequest) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *CreateQuestionRequest) GetContext() string {
+	if x != nil {
+		return x.Context
+	}
+	return ""
+}
+
+func (x *CreateQuestionRequest) GetVideoAnswerUrl() string {
+	if x != nil {
+		return x.VideoAnswerUrl
+	}
+	return ""
+}
+
+func (x *CreateQuestionRequest) GetOrder() int64 {
+	if x != nil {
+		return x.Order
+	}
+	return 0
+}
+
+type UpdateQuestionRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Text           string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Context        string                 `protobuf:"bytes,3,opt,name=context,proto3" json:"context,omitempty"`
+	VideoAnswerUrl string                 `protobuf:"bytes,4,opt,name=video_answer_url,json=videoAnswerUrl,proto3" json:"video_answer_url,omitempty"`
+	Order          int64                  `protobuf:"varint,5,opt,name=order,proto3" json:"order,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateQuestionRequest) Reset() {
+	*x = UpdateQuestionRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateQuestionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateQuestionRequest) ProtoMessage() {}
+
+func (x *UpdateQuestionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateQuestionRequest.ProtoReflect.Descriptor instead.
+func (*UpdateQuestionRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UpdateQuestionRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *UpdateQuestionRequest) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *UpdateQuestionRequest) GetContext() string {
+	if x != nil {
+		return x.Context
+	}
+	return ""
+}
+
+func (x *UpdateQuestionRequest) GetVideoAnswerUrl() string {
+	if x != nil {
+		return x.VideoAnswerUrl
+	}
+	return ""
+}
+
+func (x *UpdateQuestionRequest) GetOrder() int64 {
+	if x != nil {
+		return x.Order
+	}
+	return 0
+}
+
+type GetQuestionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetQuestionRequest) Reset() {
+	*x = GetQuestionRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQuestionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQuestionRequest) ProtoMessage() {}
+
+func (x *GetQuestionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQuestionRequest.ProtoReflect.Descriptor instead.
+func (*GetQuestionRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetQuestionRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetAllQuestionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	QuizId        int64                  `protobuf:"varint,1,opt,name=quiz_id,json=quizId,proto3" json:"quiz_id,omitempty"`
+	Limit         *int32                 `protobuf:"varint,2,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	Offset        *int32                 `protobuf:"varint,3,opt,name=offset,proto3,oneof" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllQuestionsRequest) Reset() {
+	*x = GetAllQuestionsRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllQuestionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllQuestionsRequest) ProtoMessage() {}
+
+func (x *GetAllQuestionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllQuestionsRequest.ProtoReflect.Descriptor instead.
+func (*GetAllQuestionsRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetAllQuestionsRequest) GetQuizId() int64 {
+	if x != nil {
+		return x.QuizId
+	}
+	return 0
+}
+
+func (x *GetAllQuestionsRequest) GetLimit() int32 {
+	if x != nil && x.Limit != nil {
+		return *x.Limit
+	}
+	return 0
+}
+
+func (x *GetAllQuestionsRequest) GetOffset() int32 {
+	if x != nil && x.Offset != nil {
+		return *x.Offset
+	}
+	return 0
+}
+
+type DeleteQuestionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteQuestionRequest) Reset() {
+	*x = DeleteQuestionRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteQuestionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteQuestionRequest) ProtoMessage() {}
+
+func (x *DeleteQuestionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteQuestionRequest.ProtoReflect.Descriptor instead.
+func (*DeleteQuestionRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DeleteQuestionRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type QuestionResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	QuizId         int64                  `protobuf:"varint,2,opt,name=quiz_id,json=quizId,proto3" json:"quiz_id,omitempty"`
+	Text           string                 `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	Context        string                 `protobuf:"bytes,4,opt,name=context,proto3" json:"context,omitempty"`
+	VideoAnswerUrl string                 `protobuf:"bytes,5,opt,name=video_answer_url,json=videoAnswerUrl,proto3" json:"video_answer_url,omitempty"`
+	Order          int64                  `protobuf:"varint,6,opt,name=order,proto3" json:"order,omitempty"`
+	CreatedAt      int64                  `protobuf:"varint,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      int64                  `protobuf:"varint,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *QuestionResponse) Reset() {
+	*x = QuestionResponse{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QuestionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QuestionResponse) ProtoMessage() {}
+
+func (x *QuestionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QuestionResponse.ProtoReflect.Descriptor instead.
+func (*QuestionResponse) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *QuestionResponse) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *QuestionResponse) GetQuizId() int64 {
+	if x != nil {
+		return x.QuizId
+	}
+	return 0
+}
+
+func (x *QuestionResponse) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *QuestionResponse) GetContext() string {
+	if x != nil {
+		return x.Context
+	}
+	return ""
+}
+
+func (x *QuestionResponse) GetVideoAnswerUrl() string {
+	if x != nil {
+		return x.VideoAnswerUrl
+	}
+	return ""
+}
+
+func (x *QuestionResponse) GetOrder() int64 {
+	if x != nil {
+		return x.Order
+	}
+	return 0
+}
+
+func (x *QuestionResponse) GetCreatedAt() int64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *QuestionResponse) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
+type GetAllQuestionsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Questions     []*QuestionResponse    `protobuf:"bytes,1,rep,name=questions,proto3" json:"questions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllQuestionsResponse) Reset() {
+	*x = GetAllQuestionsResponse{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllQuestionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllQuestionsResponse) ProtoMessage() {}
+
+func (x *GetAllQuestionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllQuestionsResponse.ProtoReflect.Descriptor instead.
+func (*GetAllQuestionsResponse) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *GetAllQuestionsResponse) GetQuestions() []*QuestionResponse {
+	if x != nil {
+		return x.Questions
+	}
+	return nil
+}
+
+type DeleteQuestionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteQuestionResponse) Reset() {
+	*x = DeleteQuestionResponse{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteQuestionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteQuestionResponse) ProtoMessage() {}
+
+func (x *DeleteQuestionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteQuestionResponse.ProtoReflect.Descriptor instead.
+func (*DeleteQuestionResponse) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *DeleteQuestionResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+// Answer messages
+type CreateAnswerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	QuestionId    int64                  `protobuf:"varint,1,opt,name=question_id,json=questionId,proto3" json:"question_id,omitempty"`
+	Text          string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Correct       bool                   `protobuf:"varint,3,opt,name=correct,proto3" json:"correct,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateAnswerRequest) Reset() {
+	*x = CreateAnswerRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateAnswerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateAnswerRequest) ProtoMessage() {}
+
+func (x *CreateAnswerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateAnswerRequest.ProtoReflect.Descriptor instead.
+func (*CreateAnswerRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *CreateAnswerRequest) GetQuestionId() int64 {
+	if x != nil {
+		return x.QuestionId
+	}
+	return 0
+}
+
+func (x *CreateAnswerRequest) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *CreateAnswerRequest) GetCorrect() bool {
+	if x != nil {
+		return x.Correct
+	}
+	return false
+}
+
+type UpdateAnswerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Text          string                 `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Correct       bool                   `protobuf:"varint,3,opt,name=correct,proto3" json:"correct,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateAnswerRequest) Reset() {
+	*x = UpdateAnswerRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateAnswerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateAnswerRequest) ProtoMessage() {}
+
+func (x *UpdateAnswerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateAnswerRequest.ProtoReflect.Descriptor instead.
+func (*UpdateAnswerRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateAnswerRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *UpdateAnswerRequest) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *UpdateAnswerRequest) GetCorrect() bool {
+	if x != nil {
+		return x.Correct
+	}
+	return false
+}
+
+type GetAnswerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAnswerRequest) Reset() {
+	*x = GetAnswerRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAnswerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAnswerRequest) ProtoMessage() {}
+
+func (x *GetAnswerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAnswerRequest.ProtoReflect.Descriptor instead.
+func (*GetAnswerRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetAnswerRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetAllAnswersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	QuestionId    int64                  `protobuf:"varint,1,opt,name=question_id,json=questionId,proto3" json:"question_id,omitempty"`
+	Limit         *int32                 `protobuf:"varint,2,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
+	Offset        *int32                 `protobuf:"varint,3,opt,name=offset,proto3,oneof" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllAnswersRequest) Reset() {
+	*x = GetAllAnswersRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllAnswersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllAnswersRequest) ProtoMessage() {}
+
+func (x *GetAllAnswersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllAnswersRequest.ProtoReflect.Descriptor instead.
+func (*GetAllAnswersRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetAllAnswersRequest) GetQuestionId() int64 {
+	if x != nil {
+		return x.QuestionId
+	}
+	return 0
+}
+
+func (x *GetAllAnswersRequest) GetLimit() int32 {
+	if x != nil && x.Limit != nil {
+		return *x.Limit
+	}
+	return 0
+}
+
+func (x *GetAllAnswersRequest) GetOffset() int32 {
+	if x != nil && x.Offset != nil {
+		return *x.Offset
+	}
+	return 0
+}
+
+type DeleteAnswerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAnswerRequest) Reset() {
+	*x = DeleteAnswerRequest{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAnswerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAnswerRequest) ProtoMessage() {}
+
+func (x *DeleteAnswerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAnswerRequest.ProtoReflect.Descriptor instead.
+func (*DeleteAnswerRequest) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *DeleteAnswerRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type AnswerResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	QuestionId    int64                  `protobuf:"varint,2,opt,name=question_id,json=questionId,proto3" json:"question_id,omitempty"`
+	Text          string                 `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
+	Correct       bool                   `protobuf:"varint,4,opt,name=correct,proto3" json:"correct,omitempty"`
+	CreatedAt     int64                  `protobuf:"varint,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     int64                  `protobuf:"varint,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AnswerResponse) Reset() {
+	*x = AnswerResponse{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AnswerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AnswerResponse) ProtoMessage() {}
+
+func (x *AnswerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AnswerResponse.ProtoReflect.Descriptor instead.
+func (*AnswerResponse) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *AnswerResponse) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *AnswerResponse) GetQuestionId() int64 {
+	if x != nil {
+		return x.QuestionId
+	}
+	return 0
+}
+
+func (x *AnswerResponse) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *AnswerResponse) GetCorrect() bool {
+	if x != nil {
+		return x.Correct
+	}
+	return false
+}
+
+func (x *AnswerResponse) GetCreatedAt() int64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *AnswerResponse) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
+type GetAllAnswersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Answers       []*AnswerResponse      `protobuf:"bytes,1,rep,name=answers,proto3" json:"answers,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllAnswersResponse) Reset() {
+	*x = GetAllAnswersResponse{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllAnswersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllAnswersResponse) ProtoMessage() {}
+
+func (x *GetAllAnswersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllAnswersResponse.ProtoReflect.Descriptor instead.
+func (*GetAllAnswersResponse) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetAllAnswersResponse) GetAnswers() []*AnswerResponse {
+	if x != nil {
+		return x.Answers
+	}
+	return nil
+}
+
+type DeleteAnswerResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteAnswerResponse) Reset() {
+	*x = DeleteAnswerResponse{}
+	mi := &file_quiz_v1_quiz_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteAnswerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteAnswerResponse) ProtoMessage() {}
+
+func (x *DeleteAnswerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_quiz_v1_quiz_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteAnswerResponse.ProtoReflect.Descriptor instead.
+func (*DeleteAnswerResponse) Descriptor() ([]byte, []int) {
+	return file_quiz_v1_quiz_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *DeleteAnswerResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_quiz_v1_quiz_proto protoreflect.FileDescriptor
 
 const file_quiz_v1_quiz_proto_rawDesc = "" +
@@ -543,6 +1473,77 @@ const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\x15GetAllQuizzesResponse\x12/\n" +
 	"\aquizzes\x18\x01 \x03(\v2\x15.quiz.v1.QuizResponseR\aquizzes\".\n" +
 	"\x12DeleteQuizResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"\x9e\x01\n" +
+	"\x15CreateQuestionRequest\x12\x17\n" +
+	"\aquiz_id\x18\x01 \x01(\x03R\x06quizId\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\x12\x18\n" +
+	"\acontext\x18\x03 \x01(\tR\acontext\x12(\n" +
+	"\x10video_answer_url\x18\x04 \x01(\tR\x0evideoAnswerUrl\x12\x14\n" +
+	"\x05order\x18\x05 \x01(\x03R\x05order\"\x95\x01\n" +
+	"\x15UpdateQuestionRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\x12\x18\n" +
+	"\acontext\x18\x03 \x01(\tR\acontext\x12(\n" +
+	"\x10video_answer_url\x18\x04 \x01(\tR\x0evideoAnswerUrl\x12\x14\n" +
+	"\x05order\x18\x05 \x01(\x03R\x05order\"$\n" +
+	"\x12GetQuestionRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"~\n" +
+	"\x16GetAllQuestionsRequest\x12\x17\n" +
+	"\aquiz_id\x18\x01 \x01(\x03R\x06quizId\x12\x19\n" +
+	"\x05limit\x18\x02 \x01(\x05H\x00R\x05limit\x88\x01\x01\x12\x1b\n" +
+	"\x06offset\x18\x03 \x01(\x05H\x01R\x06offset\x88\x01\x01B\b\n" +
+	"\x06_limitB\t\n" +
+	"\a_offset\"'\n" +
+	"\x15DeleteQuestionRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xe7\x01\n" +
+	"\x10QuestionResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
+	"\aquiz_id\x18\x02 \x01(\x03R\x06quizId\x12\x12\n" +
+	"\x04text\x18\x03 \x01(\tR\x04text\x12\x18\n" +
+	"\acontext\x18\x04 \x01(\tR\acontext\x12(\n" +
+	"\x10video_answer_url\x18\x05 \x01(\tR\x0evideoAnswerUrl\x12\x14\n" +
+	"\x05order\x18\x06 \x01(\x03R\x05order\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\a \x01(\x03R\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\x03R\tupdatedAt\"R\n" +
+	"\x17GetAllQuestionsResponse\x127\n" +
+	"\tquestions\x18\x01 \x03(\v2\x19.quiz.v1.QuestionResponseR\tquestions\"2\n" +
+	"\x16DeleteQuestionResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"d\n" +
+	"\x13CreateAnswerRequest\x12\x1f\n" +
+	"\vquestion_id\x18\x01 \x01(\x03R\n" +
+	"questionId\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\x12\x18\n" +
+	"\acorrect\x18\x03 \x01(\bR\acorrect\"S\n" +
+	"\x13UpdateAnswerRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x04text\x18\x02 \x01(\tR\x04text\x12\x18\n" +
+	"\acorrect\x18\x03 \x01(\bR\acorrect\"\"\n" +
+	"\x10GetAnswerRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\x84\x01\n" +
+	"\x14GetAllAnswersRequest\x12\x1f\n" +
+	"\vquestion_id\x18\x01 \x01(\x03R\n" +
+	"questionId\x12\x19\n" +
+	"\x05limit\x18\x02 \x01(\x05H\x00R\x05limit\x88\x01\x01\x12\x1b\n" +
+	"\x06offset\x18\x03 \x01(\x05H\x01R\x06offset\x88\x01\x01B\b\n" +
+	"\x06_limitB\t\n" +
+	"\a_offset\"%\n" +
+	"\x13DeleteAnswerRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xad\x01\n" +
+	"\x0eAnswerResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x1f\n" +
+	"\vquestion_id\x18\x02 \x01(\x03R\n" +
+	"questionId\x12\x12\n" +
+	"\x04text\x18\x03 \x01(\tR\x04text\x12\x18\n" +
+	"\acorrect\x18\x04 \x01(\bR\acorrect\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\x03R\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\x03R\tupdatedAt\"J\n" +
+	"\x15GetAllAnswersResponse\x121\n" +
+	"\aanswers\x18\x01 \x03(\v2\x17.quiz.v1.AnswerResponseR\aanswers\"0\n" +
+	"\x14DeleteAnswerResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage2\xe1\x02\n" +
 	"\vQuizService\x12?\n" +
 	"\n" +
@@ -552,7 +1553,19 @@ const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\n" +
 	"UpdateQuiz\x12\x1a.quiz.v1.UpdateQuizRequest\x1a\x15.quiz.v1.QuizResponse\x12E\n" +
 	"\n" +
-	"DeleteQuiz\x12\x1a.quiz.v1.DeleteQuizRequest\x1a\x1b.quiz.v1.DeleteQuizResponseBBZ@github.com/Talan-Application/proto-generation/gen/quiz/v1;quizv1b\x06proto3"
+	"DeleteQuiz\x12\x1a.quiz.v1.DeleteQuizRequest\x1a\x1b.quiz.v1.DeleteQuizResponse2\x9b\x03\n" +
+	"\x0fQuestionService\x12K\n" +
+	"\x0eCreateQuestion\x12\x1e.quiz.v1.CreateQuestionRequest\x1a\x19.quiz.v1.QuestionResponse\x12E\n" +
+	"\vGetQuestion\x12\x1b.quiz.v1.GetQuestionRequest\x1a\x19.quiz.v1.QuestionResponse\x12T\n" +
+	"\x0fGetAllQuestions\x12\x1f.quiz.v1.GetAllQuestionsRequest\x1a .quiz.v1.GetAllQuestionsResponse\x12K\n" +
+	"\x0eUpdateQuestion\x12\x1e.quiz.v1.UpdateQuestionRequest\x1a\x19.quiz.v1.QuestionResponse\x12Q\n" +
+	"\x0eDeleteQuestion\x12\x1e.quiz.v1.DeleteQuestionRequest\x1a\x1f.quiz.v1.DeleteQuestionResponse2\xfb\x02\n" +
+	"\rAnswerService\x12E\n" +
+	"\fCreateAnswer\x12\x1c.quiz.v1.CreateAnswerRequest\x1a\x17.quiz.v1.AnswerResponse\x12?\n" +
+	"\tGetAnswer\x12\x19.quiz.v1.GetAnswerRequest\x1a\x17.quiz.v1.AnswerResponse\x12N\n" +
+	"\rGetAllAnswers\x12\x1d.quiz.v1.GetAllAnswersRequest\x1a\x1e.quiz.v1.GetAllAnswersResponse\x12E\n" +
+	"\fUpdateAnswer\x12\x1c.quiz.v1.UpdateAnswerRequest\x1a\x17.quiz.v1.AnswerResponse\x12K\n" +
+	"\fDeleteAnswer\x12\x1c.quiz.v1.DeleteAnswerRequest\x1a\x1d.quiz.v1.DeleteAnswerResponseBBZ@github.com/Talan-Application/proto-generation/gen/quiz/v1;quizv1b\x06proto3"
 
 var (
 	file_quiz_v1_quiz_proto_rawDescOnce sync.Once
@@ -566,34 +1579,72 @@ func file_quiz_v1_quiz_proto_rawDescGZIP() []byte {
 	return file_quiz_v1_quiz_proto_rawDescData
 }
 
-var file_quiz_v1_quiz_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_quiz_v1_quiz_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_quiz_v1_quiz_proto_goTypes = []any{
-	(*CreateQuizRequest)(nil),     // 0: quiz.v1.CreateQuizRequest
-	(*UpdateQuizRequest)(nil),     // 1: quiz.v1.UpdateQuizRequest
-	(*GetQuizRequest)(nil),        // 2: quiz.v1.GetQuizRequest
-	(*GetAllQuizzesRequest)(nil),  // 3: quiz.v1.GetAllQuizzesRequest
-	(*DeleteQuizRequest)(nil),     // 4: quiz.v1.DeleteQuizRequest
-	(*QuizResponse)(nil),          // 5: quiz.v1.QuizResponse
-	(*GetAllQuizzesResponse)(nil), // 6: quiz.v1.GetAllQuizzesResponse
-	(*DeleteQuizResponse)(nil),    // 7: quiz.v1.DeleteQuizResponse
+	(*CreateQuizRequest)(nil),       // 0: quiz.v1.CreateQuizRequest
+	(*UpdateQuizRequest)(nil),       // 1: quiz.v1.UpdateQuizRequest
+	(*GetQuizRequest)(nil),          // 2: quiz.v1.GetQuizRequest
+	(*GetAllQuizzesRequest)(nil),    // 3: quiz.v1.GetAllQuizzesRequest
+	(*DeleteQuizRequest)(nil),       // 4: quiz.v1.DeleteQuizRequest
+	(*QuizResponse)(nil),            // 5: quiz.v1.QuizResponse
+	(*GetAllQuizzesResponse)(nil),   // 6: quiz.v1.GetAllQuizzesResponse
+	(*DeleteQuizResponse)(nil),      // 7: quiz.v1.DeleteQuizResponse
+	(*CreateQuestionRequest)(nil),   // 8: quiz.v1.CreateQuestionRequest
+	(*UpdateQuestionRequest)(nil),   // 9: quiz.v1.UpdateQuestionRequest
+	(*GetQuestionRequest)(nil),      // 10: quiz.v1.GetQuestionRequest
+	(*GetAllQuestionsRequest)(nil),  // 11: quiz.v1.GetAllQuestionsRequest
+	(*DeleteQuestionRequest)(nil),   // 12: quiz.v1.DeleteQuestionRequest
+	(*QuestionResponse)(nil),        // 13: quiz.v1.QuestionResponse
+	(*GetAllQuestionsResponse)(nil), // 14: quiz.v1.GetAllQuestionsResponse
+	(*DeleteQuestionResponse)(nil),  // 15: quiz.v1.DeleteQuestionResponse
+	(*CreateAnswerRequest)(nil),     // 16: quiz.v1.CreateAnswerRequest
+	(*UpdateAnswerRequest)(nil),     // 17: quiz.v1.UpdateAnswerRequest
+	(*GetAnswerRequest)(nil),        // 18: quiz.v1.GetAnswerRequest
+	(*GetAllAnswersRequest)(nil),    // 19: quiz.v1.GetAllAnswersRequest
+	(*DeleteAnswerRequest)(nil),     // 20: quiz.v1.DeleteAnswerRequest
+	(*AnswerResponse)(nil),          // 21: quiz.v1.AnswerResponse
+	(*GetAllAnswersResponse)(nil),   // 22: quiz.v1.GetAllAnswersResponse
+	(*DeleteAnswerResponse)(nil),    // 23: quiz.v1.DeleteAnswerResponse
 }
 var file_quiz_v1_quiz_proto_depIdxs = []int32{
-	5, // 0: quiz.v1.GetAllQuizzesResponse.quizzes:type_name -> quiz.v1.QuizResponse
-	0, // 1: quiz.v1.QuizService.CreateQuiz:input_type -> quiz.v1.CreateQuizRequest
-	2, // 2: quiz.v1.QuizService.GetQuiz:input_type -> quiz.v1.GetQuizRequest
-	3, // 3: quiz.v1.QuizService.GetAllQuizzes:input_type -> quiz.v1.GetAllQuizzesRequest
-	1, // 4: quiz.v1.QuizService.UpdateQuiz:input_type -> quiz.v1.UpdateQuizRequest
-	4, // 5: quiz.v1.QuizService.DeleteQuiz:input_type -> quiz.v1.DeleteQuizRequest
-	5, // 6: quiz.v1.QuizService.CreateQuiz:output_type -> quiz.v1.QuizResponse
-	5, // 7: quiz.v1.QuizService.GetQuiz:output_type -> quiz.v1.QuizResponse
-	6, // 8: quiz.v1.QuizService.GetAllQuizzes:output_type -> quiz.v1.GetAllQuizzesResponse
-	5, // 9: quiz.v1.QuizService.UpdateQuiz:output_type -> quiz.v1.QuizResponse
-	7, // 10: quiz.v1.QuizService.DeleteQuiz:output_type -> quiz.v1.DeleteQuizResponse
-	6, // [6:11] is the sub-list for method output_type
-	1, // [1:6] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	5,  // 0: quiz.v1.GetAllQuizzesResponse.quizzes:type_name -> quiz.v1.QuizResponse
+	13, // 1: quiz.v1.GetAllQuestionsResponse.questions:type_name -> quiz.v1.QuestionResponse
+	21, // 2: quiz.v1.GetAllAnswersResponse.answers:type_name -> quiz.v1.AnswerResponse
+	0,  // 3: quiz.v1.QuizService.CreateQuiz:input_type -> quiz.v1.CreateQuizRequest
+	2,  // 4: quiz.v1.QuizService.GetQuiz:input_type -> quiz.v1.GetQuizRequest
+	3,  // 5: quiz.v1.QuizService.GetAllQuizzes:input_type -> quiz.v1.GetAllQuizzesRequest
+	1,  // 6: quiz.v1.QuizService.UpdateQuiz:input_type -> quiz.v1.UpdateQuizRequest
+	4,  // 7: quiz.v1.QuizService.DeleteQuiz:input_type -> quiz.v1.DeleteQuizRequest
+	8,  // 8: quiz.v1.QuestionService.CreateQuestion:input_type -> quiz.v1.CreateQuestionRequest
+	10, // 9: quiz.v1.QuestionService.GetQuestion:input_type -> quiz.v1.GetQuestionRequest
+	11, // 10: quiz.v1.QuestionService.GetAllQuestions:input_type -> quiz.v1.GetAllQuestionsRequest
+	9,  // 11: quiz.v1.QuestionService.UpdateQuestion:input_type -> quiz.v1.UpdateQuestionRequest
+	12, // 12: quiz.v1.QuestionService.DeleteQuestion:input_type -> quiz.v1.DeleteQuestionRequest
+	16, // 13: quiz.v1.AnswerService.CreateAnswer:input_type -> quiz.v1.CreateAnswerRequest
+	18, // 14: quiz.v1.AnswerService.GetAnswer:input_type -> quiz.v1.GetAnswerRequest
+	19, // 15: quiz.v1.AnswerService.GetAllAnswers:input_type -> quiz.v1.GetAllAnswersRequest
+	17, // 16: quiz.v1.AnswerService.UpdateAnswer:input_type -> quiz.v1.UpdateAnswerRequest
+	20, // 17: quiz.v1.AnswerService.DeleteAnswer:input_type -> quiz.v1.DeleteAnswerRequest
+	5,  // 18: quiz.v1.QuizService.CreateQuiz:output_type -> quiz.v1.QuizResponse
+	5,  // 19: quiz.v1.QuizService.GetQuiz:output_type -> quiz.v1.QuizResponse
+	6,  // 20: quiz.v1.QuizService.GetAllQuizzes:output_type -> quiz.v1.GetAllQuizzesResponse
+	5,  // 21: quiz.v1.QuizService.UpdateQuiz:output_type -> quiz.v1.QuizResponse
+	7,  // 22: quiz.v1.QuizService.DeleteQuiz:output_type -> quiz.v1.DeleteQuizResponse
+	13, // 23: quiz.v1.QuestionService.CreateQuestion:output_type -> quiz.v1.QuestionResponse
+	13, // 24: quiz.v1.QuestionService.GetQuestion:output_type -> quiz.v1.QuestionResponse
+	14, // 25: quiz.v1.QuestionService.GetAllQuestions:output_type -> quiz.v1.GetAllQuestionsResponse
+	13, // 26: quiz.v1.QuestionService.UpdateQuestion:output_type -> quiz.v1.QuestionResponse
+	15, // 27: quiz.v1.QuestionService.DeleteQuestion:output_type -> quiz.v1.DeleteQuestionResponse
+	21, // 28: quiz.v1.AnswerService.CreateAnswer:output_type -> quiz.v1.AnswerResponse
+	21, // 29: quiz.v1.AnswerService.GetAnswer:output_type -> quiz.v1.AnswerResponse
+	22, // 30: quiz.v1.AnswerService.GetAllAnswers:output_type -> quiz.v1.GetAllAnswersResponse
+	21, // 31: quiz.v1.AnswerService.UpdateAnswer:output_type -> quiz.v1.AnswerResponse
+	23, // 32: quiz.v1.AnswerService.DeleteAnswer:output_type -> quiz.v1.DeleteAnswerResponse
+	18, // [18:33] is the sub-list for method output_type
+	3,  // [3:18] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_quiz_v1_quiz_proto_init() }
@@ -602,15 +1653,17 @@ func file_quiz_v1_quiz_proto_init() {
 		return
 	}
 	file_quiz_v1_quiz_proto_msgTypes[3].OneofWrappers = []any{}
+	file_quiz_v1_quiz_proto_msgTypes[11].OneofWrappers = []any{}
+	file_quiz_v1_quiz_proto_msgTypes[19].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_quiz_v1_quiz_proto_rawDesc), len(file_quiz_v1_quiz_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   24,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   3,
 		},
 		GoTypes:           file_quiz_v1_quiz_proto_goTypes,
 		DependencyIndexes: file_quiz_v1_quiz_proto_depIdxs,
