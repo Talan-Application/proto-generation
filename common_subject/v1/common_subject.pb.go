@@ -454,7 +454,7 @@ const file_common_subject_v1_common_subject_proto_rawDesc = "" +
 	"\x10GetCommonSubject\x12*.common_subject.v1.GetCommonSubjectRequest\x1a(.common_subject.v1.CommonSubjectResponse\x12w\n" +
 	"\x14GetAllCommonSubjects\x12..common_subject.v1.GetAllCommonSubjectsRequest\x1a/.common_subject.v1.GetAllCommonSubjectsResponse\x12n\n" +
 	"\x13UpdateCommonSubject\x12-.common_subject.v1.UpdateCommonSubjectRequest\x1a(.common_subject.v1.CommonSubjectResponse\x12t\n" +
-	"\x13DeleteCommonSubject\x12-.common_subject.v1.DeleteCommonSubjectRequest\x1a..common_subject.v1.DeleteCommonSubjectResponseBQZOgithub.com/Talan-Application/proto-generation/common_subject/v1;commonsubjectv1b\x06proto3"
+	"\x13DeleteCommonSubject\x12-.common_subject.v1.DeleteCommonSubjectRequest\x1a..common_subject.v1.DeleteCommonSubjectResponseBUZSgithub.com/Talan-Application/proto-generation/gen/common_subject/v1;commonsubjectv1b\x06proto3"
 
 var (
 	file_common_subject_v1_common_subject_proto_rawDescOnce sync.Once

@@ -390,6 +390,7 @@ type ValidateTokenResponse struct {
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	Role          string                 `protobuf:"bytes,3,opt,name=role,proto3" json:"role,omitempty"`
+	Locale        string                 `protobuf:"bytes,4,opt,name=locale,proto3" json:"locale,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -445,6 +446,13 @@ func (x *ValidateTokenResponse) GetRole() string {
 	return ""
 }
 
+func (x *ValidateTokenResponse) GetLocale() string {
+	if x != nil {
+		return x.Locale
+	}
+	return ""
+}
+
 var File_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_auth_v1_auth_proto_rawDesc = "" +
@@ -473,11 +481,12 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"+\n" +
 	"\x0fOTPSentResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"Z\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"r\n" +
 	"\x15ValidateTokenResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04role2\xa4\x03\n" +
+	"\x04role\x18\x03 \x01(\tR\x04role\x12\x16\n" +
+	"\x06locale\x18\x04 \x01(\tR\x06locale2\xa4\x03\n" +
 	"\vAuthService\x12>\n" +
 	"\bRegister\x12\x18.auth.v1.RegisterRequest\x1a\x18.auth.v1.OTPSentResponse\x128\n" +
 	"\x05Login\x12\x15.auth.v1.LoginRequest\x1a\x18.auth.v1.OTPSentResponse\x12C\n" +
