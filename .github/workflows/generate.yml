@@ -29,6 +29,7 @@ jobs:
               run: |
                   mkdir -p gen/auth/v1
                   mkdir -p gen/quiz/v1
+                  mkdir -p gen/common_subject/v1
 
                   protoc \
                     --proto_path=proto-files/proto \
@@ -38,6 +39,7 @@ jobs:
                     --go-grpc_opt=paths=source_relative \
                     proto-files/proto/auth/v1/auth.proto \
                     proto-files/proto/quiz/v1/quiz.proto
+                    proto-files/proto/common_subject/v1/common_subject.proto
 
             - name: Clone Generator Repository
               run: |
