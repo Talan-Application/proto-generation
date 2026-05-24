@@ -341,6 +341,118 @@ func (x *AuthResponse) GetRefreshToken() string {
 	return ""
 }
 
+type UserInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FullName      string                 `protobuf:"bytes,1,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	Role          string                 `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserInfo) Reset() {
+	*x = UserInfo{}
+	mi := &file_auth_v1_auth_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserInfo) ProtoMessage() {}
+
+func (x *UserInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserInfo.ProtoReflect.Descriptor instead.
+func (*UserInfo) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UserInfo) GetFullName() string {
+	if x != nil {
+		return x.FullName
+	}
+	return ""
+}
+
+func (x *UserInfo) GetRole() string {
+	if x != nil {
+		return x.Role
+	}
+	return ""
+}
+
+type VerifyLoginResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	User          *UserInfo              `protobuf:"bytes,3,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VerifyLoginResponse) Reset() {
+	*x = VerifyLoginResponse{}
+	mi := &file_auth_v1_auth_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VerifyLoginResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyLoginResponse) ProtoMessage() {}
+
+func (x *VerifyLoginResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_v1_auth_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyLoginResponse.ProtoReflect.Descriptor instead.
+func (*VerifyLoginResponse) Descriptor() ([]byte, []int) {
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *VerifyLoginResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *VerifyLoginResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *VerifyLoginResponse) GetUser() *UserInfo {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type OTPSentResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
@@ -350,7 +462,7 @@ type OTPSentResponse struct {
 
 func (x *OTPSentResponse) Reset() {
 	*x = OTPSentResponse{}
-	mi := &file_auth_v1_auth_proto_msgTypes[6]
+	mi := &file_auth_v1_auth_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -362,7 +474,7 @@ func (x *OTPSentResponse) String() string {
 func (*OTPSentResponse) ProtoMessage() {}
 
 func (x *OTPSentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_auth_proto_msgTypes[6]
+	mi := &file_auth_v1_auth_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -375,7 +487,7 @@ func (x *OTPSentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OTPSentResponse.ProtoReflect.Descriptor instead.
 func (*OTPSentResponse) Descriptor() ([]byte, []int) {
-	return file_auth_v1_auth_proto_rawDescGZIP(), []int{6}
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *OTPSentResponse) GetMessage() string {
@@ -397,7 +509,7 @@ type ValidateTokenResponse struct {
 
 func (x *ValidateTokenResponse) Reset() {
 	*x = ValidateTokenResponse{}
-	mi := &file_auth_v1_auth_proto_msgTypes[7]
+	mi := &file_auth_v1_auth_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -409,7 +521,7 @@ func (x *ValidateTokenResponse) String() string {
 func (*ValidateTokenResponse) ProtoMessage() {}
 
 func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_v1_auth_proto_msgTypes[7]
+	mi := &file_auth_v1_auth_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -422,7 +534,7 @@ func (x *ValidateTokenResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ValidateTokenResponse.ProtoReflect.Descriptor instead.
 func (*ValidateTokenResponse) Descriptor() ([]byte, []int) {
-	return file_auth_v1_auth_proto_rawDescGZIP(), []int{7}
+	return file_auth_v1_auth_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *ValidateTokenResponse) GetUserId() int64 {
@@ -479,21 +591,28 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"V\n" +
 	"\fAuthResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"+\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\";\n" +
+	"\bUserInfo\x12\x1b\n" +
+	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12\x12\n" +
+	"\x04role\x18\x02 \x01(\tR\x04role\"\x84\x01\n" +
+	"\x13VerifyLoginResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12%\n" +
+	"\x04user\x18\x03 \x01(\v2\x11.auth.v1.UserInfoR\x04user\"+\n" +
 	"\x0fOTPSentResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"r\n" +
 	"\x15ValidateTokenResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
 	"\x04role\x18\x03 \x01(\tR\x04role\x12\x16\n" +
-	"\x06locale\x18\x04 \x01(\tR\x06locale2\xa4\x03\n" +
+	"\x06locale\x18\x04 \x01(\tR\x06locale2\xab\x03\n" +
 	"\vAuthService\x12>\n" +
 	"\bRegister\x12\x18.auth.v1.RegisterRequest\x1a\x18.auth.v1.OTPSentResponse\x128\n" +
 	"\x05Login\x12\x15.auth.v1.LoginRequest\x1a\x18.auth.v1.OTPSentResponse\x12C\n" +
 	"\fRefreshToken\x12\x1c.auth.v1.RefreshTokenRequest\x1a\x15.auth.v1.AuthResponse\x12N\n" +
 	"\rValidateToken\x12\x1d.auth.v1.ValidateTokenRequest\x1a\x1e.auth.v1.ValidateTokenResponse\x12@\n" +
-	"\vVerifyEmail\x12\x1a.auth.v1.VerifyCodeRequest\x1a\x15.auth.v1.AuthResponse\x12D\n" +
-	"\x0fVerifyLoginCode\x12\x1a.auth.v1.VerifyCodeRequest\x1a\x15.auth.v1.AuthResponseBBZ@github.com/Talan-Application/proto-generation/gen/auth/v1;authv1b\x06proto3"
+	"\vVerifyEmail\x12\x1a.auth.v1.VerifyCodeRequest\x1a\x15.auth.v1.AuthResponse\x12K\n" +
+	"\x0fVerifyLoginCode\x12\x1a.auth.v1.VerifyCodeRequest\x1a\x1c.auth.v1.VerifyLoginResponseBBZ@github.com/Talan-Application/proto-generation/gen/auth/v1;authv1b\x06proto3"
 
 var (
 	file_auth_v1_auth_proto_rawDescOnce sync.Once
@@ -507,7 +626,7 @@ func file_auth_v1_auth_proto_rawDescGZIP() []byte {
 	return file_auth_v1_auth_proto_rawDescData
 }
 
-var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_auth_v1_auth_proto_goTypes = []any{
 	(*RegisterRequest)(nil),       // 0: auth.v1.RegisterRequest
 	(*LoginRequest)(nil),          // 1: auth.v1.LoginRequest
@@ -515,27 +634,30 @@ var file_auth_v1_auth_proto_goTypes = []any{
 	(*RefreshTokenRequest)(nil),   // 3: auth.v1.RefreshTokenRequest
 	(*ValidateTokenRequest)(nil),  // 4: auth.v1.ValidateTokenRequest
 	(*AuthResponse)(nil),          // 5: auth.v1.AuthResponse
-	(*OTPSentResponse)(nil),       // 6: auth.v1.OTPSentResponse
-	(*ValidateTokenResponse)(nil), // 7: auth.v1.ValidateTokenResponse
+	(*UserInfo)(nil),              // 6: auth.v1.UserInfo
+	(*VerifyLoginResponse)(nil),   // 7: auth.v1.VerifyLoginResponse
+	(*OTPSentResponse)(nil),       // 8: auth.v1.OTPSentResponse
+	(*ValidateTokenResponse)(nil), // 9: auth.v1.ValidateTokenResponse
 }
 var file_auth_v1_auth_proto_depIdxs = []int32{
-	0, // 0: auth.v1.AuthService.Register:input_type -> auth.v1.RegisterRequest
-	1, // 1: auth.v1.AuthService.Login:input_type -> auth.v1.LoginRequest
-	3, // 2: auth.v1.AuthService.RefreshToken:input_type -> auth.v1.RefreshTokenRequest
-	4, // 3: auth.v1.AuthService.ValidateToken:input_type -> auth.v1.ValidateTokenRequest
-	2, // 4: auth.v1.AuthService.VerifyEmail:input_type -> auth.v1.VerifyCodeRequest
-	2, // 5: auth.v1.AuthService.VerifyLoginCode:input_type -> auth.v1.VerifyCodeRequest
-	6, // 6: auth.v1.AuthService.Register:output_type -> auth.v1.OTPSentResponse
-	6, // 7: auth.v1.AuthService.Login:output_type -> auth.v1.OTPSentResponse
-	5, // 8: auth.v1.AuthService.RefreshToken:output_type -> auth.v1.AuthResponse
-	7, // 9: auth.v1.AuthService.ValidateToken:output_type -> auth.v1.ValidateTokenResponse
-	5, // 10: auth.v1.AuthService.VerifyEmail:output_type -> auth.v1.AuthResponse
-	5, // 11: auth.v1.AuthService.VerifyLoginCode:output_type -> auth.v1.AuthResponse
-	6, // [6:12] is the sub-list for method output_type
-	0, // [0:6] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: auth.v1.VerifyLoginResponse.user:type_name -> auth.v1.UserInfo
+	0, // 1: auth.v1.AuthService.Register:input_type -> auth.v1.RegisterRequest
+	1, // 2: auth.v1.AuthService.Login:input_type -> auth.v1.LoginRequest
+	3, // 3: auth.v1.AuthService.RefreshToken:input_type -> auth.v1.RefreshTokenRequest
+	4, // 4: auth.v1.AuthService.ValidateToken:input_type -> auth.v1.ValidateTokenRequest
+	2, // 5: auth.v1.AuthService.VerifyEmail:input_type -> auth.v1.VerifyCodeRequest
+	2, // 6: auth.v1.AuthService.VerifyLoginCode:input_type -> auth.v1.VerifyCodeRequest
+	8, // 7: auth.v1.AuthService.Register:output_type -> auth.v1.OTPSentResponse
+	8, // 8: auth.v1.AuthService.Login:output_type -> auth.v1.OTPSentResponse
+	5, // 9: auth.v1.AuthService.RefreshToken:output_type -> auth.v1.AuthResponse
+	9, // 10: auth.v1.AuthService.ValidateToken:output_type -> auth.v1.ValidateTokenResponse
+	5, // 11: auth.v1.AuthService.VerifyEmail:output_type -> auth.v1.AuthResponse
+	7, // 12: auth.v1.AuthService.VerifyLoginCode:output_type -> auth.v1.VerifyLoginResponse
+	7, // [7:13] is the sub-list for method output_type
+	1, // [1:7] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_auth_v1_auth_proto_init() }
@@ -550,7 +672,7 @@ func file_auth_v1_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_v1_auth_proto_rawDesc), len(file_auth_v1_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

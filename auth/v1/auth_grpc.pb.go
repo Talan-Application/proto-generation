@@ -36,7 +36,7 @@ type AuthServiceClient interface {
 	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*AuthResponse, error)
 	ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error)
 	VerifyEmail(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*AuthResponse, error)
-	VerifyLoginCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*AuthResponse, error)
+	VerifyLoginCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*VerifyLoginResponse, error)
 }
 
 type authServiceClient struct {
@@ -97,9 +97,9 @@ func (c *authServiceClient) VerifyEmail(ctx context.Context, in *VerifyCodeReque
 	return out, nil
 }
 
-func (c *authServiceClient) VerifyLoginCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*AuthResponse, error) {
+func (c *authServiceClient) VerifyLoginCode(ctx context.Context, in *VerifyCodeRequest, opts ...grpc.CallOption) (*VerifyLoginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AuthResponse)
+	out := new(VerifyLoginResponse)
 	err := c.cc.Invoke(ctx, AuthService_VerifyLoginCode_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -116,7 +116,7 @@ type AuthServiceServer interface {
 	RefreshToken(context.Context, *RefreshTokenRequest) (*AuthResponse, error)
 	ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error)
 	VerifyEmail(context.Context, *VerifyCodeRequest) (*AuthResponse, error)
-	VerifyLoginCode(context.Context, *VerifyCodeRequest) (*AuthResponse, error)
+	VerifyLoginCode(context.Context, *VerifyCodeRequest) (*VerifyLoginResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -142,7 +142,7 @@ func (UnimplementedAuthServiceServer) ValidateToken(context.Context, *ValidateTo
 func (UnimplementedAuthServiceServer) VerifyEmail(context.Context, *VerifyCodeRequest) (*AuthResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method VerifyEmail not implemented")
 }
-func (UnimplementedAuthServiceServer) VerifyLoginCode(context.Context, *VerifyCodeRequest) (*AuthResponse, error) {
+func (UnimplementedAuthServiceServer) VerifyLoginCode(context.Context, *VerifyCodeRequest) (*VerifyLoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method VerifyLoginCode not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
