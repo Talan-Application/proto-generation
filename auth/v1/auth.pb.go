@@ -343,8 +343,10 @@ func (x *AuthResponse) GetRefreshToken() string {
 
 type UserInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FullName      string                 `protobuf:"bytes,1,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
-	Role          string                 `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty"`
+	FirstName     string                 `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName    *string                `protobuf:"bytes,3,opt,name=middle_name,json=middleName,proto3,oneof" json:"middle_name,omitempty"`
+	Role          string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -379,9 +381,23 @@ func (*UserInfo) Descriptor() ([]byte, []int) {
 	return file_auth_v1_auth_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *UserInfo) GetFullName() string {
+func (x *UserInfo) GetFirstName() string {
 	if x != nil {
-		return x.FullName
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *UserInfo) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+func (x *UserInfo) GetMiddleName() string {
+	if x != nil && x.MiddleName != nil {
+		return *x.MiddleName
 	}
 	return ""
 }
@@ -591,10 +607,15 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"V\n" +
 	"\fAuthResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\";\n" +
-	"\bUserInfo\x12\x1b\n" +
-	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12\x12\n" +
-	"\x04role\x18\x02 \x01(\tR\x04role\"\x84\x01\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\x90\x01\n" +
+	"\bUserInfo\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x02 \x01(\tR\blastName\x12$\n" +
+	"\vmiddle_name\x18\x03 \x01(\tH\x00R\n" +
+	"middleName\x88\x01\x01\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04roleB\x0e\n" +
+	"\f_middle_name\"\x84\x01\n" +
 	"\x13VerifyLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12%\n" +
@@ -666,6 +687,7 @@ func file_auth_v1_auth_proto_init() {
 		return
 	}
 	file_auth_v1_auth_proto_msgTypes[0].OneofWrappers = []any{}
+	file_auth_v1_auth_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
