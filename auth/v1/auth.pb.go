@@ -342,13 +342,14 @@ func (x *AuthResponse) GetRefreshToken() string {
 }
 
 type UserInfo struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	FirstName     string                 `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	LastName      string                 `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MiddleName    *string                `protobuf:"bytes,3,opt,name=middle_name,json=middleName,proto3,oneof" json:"middle_name,omitempty"`
-	Role          string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	FirstName       string                 `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName        string                 `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MiddleName      *string                `protobuf:"bytes,3,opt,name=middle_name,json=middleName,proto3,oneof" json:"middle_name,omitempty"`
+	Role            string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
+	PreferredLocale string                 `protobuf:"bytes,5,opt,name=preferred_locale,json=preferredLocale,proto3" json:"preferred_locale,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *UserInfo) Reset() {
@@ -405,6 +406,13 @@ func (x *UserInfo) GetMiddleName() string {
 func (x *UserInfo) GetRole() string {
 	if x != nil {
 		return x.Role
+	}
+	return ""
+}
+
+func (x *UserInfo) GetPreferredLocale() string {
+	if x != nil {
+		return x.PreferredLocale
 	}
 	return ""
 }
@@ -607,14 +615,15 @@ const file_auth_v1_auth_proto_rawDesc = "" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"V\n" +
 	"\fAuthResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\x90\x01\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\xbb\x01\n" +
 	"\bUserInfo\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x01 \x01(\tR\tfirstName\x12\x1b\n" +
 	"\tlast_name\x18\x02 \x01(\tR\blastName\x12$\n" +
 	"\vmiddle_name\x18\x03 \x01(\tH\x00R\n" +
 	"middleName\x88\x01\x01\x12\x12\n" +
-	"\x04role\x18\x04 \x01(\tR\x04roleB\x0e\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\x12)\n" +
+	"\x10preferred_locale\x18\x05 \x01(\tR\x0fpreferredLocaleB\x0e\n" +
 	"\f_middle_name\"\x84\x01\n" +
 	"\x13VerifyLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
