@@ -22,6 +22,8 @@ const (
 	QuizService_CreateQuiz_FullMethodName    = "/quiz.v1.QuizService/CreateQuiz"
 	QuizService_GetQuiz_FullMethodName       = "/quiz.v1.QuizService/GetQuiz"
 	QuizService_GetAllQuizzes_FullMethodName = "/quiz.v1.QuizService/GetAllQuizzes"
+	QuizService_GetMyQuizzes_FullMethodName  = "/quiz.v1.QuizService/GetMyQuizzes"
+	QuizService_PublishQuiz_FullMethodName   = "/quiz.v1.QuizService/PublishQuiz"
 	QuizService_UpdateQuiz_FullMethodName    = "/quiz.v1.QuizService/UpdateQuiz"
 	QuizService_DeleteQuiz_FullMethodName    = "/quiz.v1.QuizService/DeleteQuiz"
 )
@@ -33,6 +35,8 @@ type QuizServiceClient interface {
 	CreateQuiz(ctx context.Context, in *CreateQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
 	GetQuiz(ctx context.Context, in *GetQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
 	GetAllQuizzes(ctx context.Context, in *GetAllQuizzesRequest, opts ...grpc.CallOption) (*GetAllQuizzesResponse, error)
+	GetMyQuizzes(ctx context.Context, in *GetMyQuizzesRequest, opts ...grpc.CallOption) (*GetAllQuizzesResponse, error)
+	PublishQuiz(ctx context.Context, in *PublishQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
 	UpdateQuiz(ctx context.Context, in *UpdateQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
 	DeleteQuiz(ctx context.Context, in *DeleteQuizRequest, opts ...grpc.CallOption) (*DeleteQuizResponse, error)
 }
@@ -75,6 +79,26 @@ func (c *quizServiceClient) GetAllQuizzes(ctx context.Context, in *GetAllQuizzes
 	return out, nil
 }
 
+func (c *quizServiceClient) GetMyQuizzes(ctx context.Context, in *GetMyQuizzesRequest, opts ...grpc.CallOption) (*GetAllQuizzesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllQuizzesResponse)
+	err := c.cc.Invoke(ctx, QuizService_GetMyQuizzes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *quizServiceClient) PublishQuiz(ctx context.Context, in *PublishQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(QuizResponse)
+	err := c.cc.Invoke(ctx, QuizService_PublishQuiz_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *quizServiceClient) UpdateQuiz(ctx context.Context, in *UpdateQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(QuizResponse)
@@ -102,6 +126,8 @@ type QuizServiceServer interface {
 	CreateQuiz(context.Context, *CreateQuizRequest) (*QuizResponse, error)
 	GetQuiz(context.Context, *GetQuizRequest) (*QuizResponse, error)
 	GetAllQuizzes(context.Context, *GetAllQuizzesRequest) (*GetAllQuizzesResponse, error)
+	GetMyQuizzes(context.Context, *GetMyQuizzesRequest) (*GetAllQuizzesResponse, error)
+	PublishQuiz(context.Context, *PublishQuizRequest) (*QuizResponse, error)
 	UpdateQuiz(context.Context, *UpdateQuizRequest) (*QuizResponse, error)
 	DeleteQuiz(context.Context, *DeleteQuizRequest) (*DeleteQuizResponse, error)
 	mustEmbedUnimplementedQuizServiceServer()
@@ -122,6 +148,12 @@ func (UnimplementedQuizServiceServer) GetQuiz(context.Context, *GetQuizRequest) 
 }
 func (UnimplementedQuizServiceServer) GetAllQuizzes(context.Context, *GetAllQuizzesRequest) (*GetAllQuizzesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAllQuizzes not implemented")
+}
+func (UnimplementedQuizServiceServer) GetMyQuizzes(context.Context, *GetMyQuizzesRequest) (*GetAllQuizzesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetMyQuizzes not implemented")
+}
+func (UnimplementedQuizServiceServer) PublishQuiz(context.Context, *PublishQuizRequest) (*QuizResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PublishQuiz not implemented")
 }
 func (UnimplementedQuizServiceServer) UpdateQuiz(context.Context, *UpdateQuizRequest) (*QuizResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateQuiz not implemented")
@@ -204,6 +236,42 @@ func _QuizService_GetAllQuizzes_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _QuizService_GetMyQuizzes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMyQuizzesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QuizServiceServer).GetMyQuizzes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: QuizService_GetMyQuizzes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QuizServiceServer).GetMyQuizzes(ctx, req.(*GetMyQuizzesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _QuizService_PublishQuiz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PublishQuizRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QuizServiceServer).PublishQuiz(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: QuizService_PublishQuiz_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QuizServiceServer).PublishQuiz(ctx, req.(*PublishQuizRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _QuizService_UpdateQuiz_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateQuizRequest)
 	if err := dec(in); err != nil {
@@ -258,6 +326,14 @@ var QuizService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllQuizzes",
 			Handler:    _QuizService_GetAllQuizzes_Handler,
+		},
+		{
+			MethodName: "GetMyQuizzes",
+			Handler:    _QuizService_GetMyQuizzes_Handler,
+		},
+		{
+			MethodName: "PublishQuiz",
+			Handler:    _QuizService_PublishQuiz_Handler,
 		},
 		{
 			MethodName: "UpdateQuiz",
