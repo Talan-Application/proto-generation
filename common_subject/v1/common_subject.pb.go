@@ -263,6 +263,7 @@ type CommonSubjectResponse struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	CreatedAt     int64                  `protobuf:"varint,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt     int64                  `protobuf:"varint,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Translations  map[string]string      `protobuf:"bytes,6,rep,name=translations,proto3" json:"translations,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -323,6 +324,13 @@ func (x *CommonSubjectResponse) GetUpdatedAt() int64 {
 		return x.UpdatedAt
 	}
 	return 0
+}
+
+func (x *CommonSubjectResponse) GetTranslations() map[string]string {
+	if x != nil {
+		return x.Translations
+	}
+	return nil
 }
 
 type GetAllCommonSubjectsResponse struct {
@@ -437,14 +445,18 @@ const file_common_subject_v1_common_subject_proto_rawDesc = "" +
 	"\x06_limitB\t\n" +
 	"\a_offset\",\n" +
 	"\x1aDeleteCommonSubjectRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"y\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\x9a\x02\n" +
 	"\x15CommonSubjectResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x04 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\x03R\tupdatedAt\"q\n" +
+	"updated_at\x18\x05 \x01(\x03R\tupdatedAt\x12^\n" +
+	"\ftranslations\x18\x06 \x03(\v2:.common_subject.v1.CommonSubjectResponse.TranslationsEntryR\ftranslations\x1a?\n" +
+	"\x11TranslationsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"q\n" +
 	"\x1cGetAllCommonSubjectsResponse\x12Q\n" +
 	"\x0fcommon_subjects\x18\x01 \x03(\v2(.common_subject.v1.CommonSubjectResponseR\x0ecommonSubjects\"7\n" +
 	"\x1bDeleteCommonSubjectResponse\x12\x18\n" +
@@ -468,7 +480,7 @@ func file_common_subject_v1_common_subject_proto_rawDescGZIP() []byte {
 	return file_common_subject_v1_common_subject_proto_rawDescData
 }
 
-var file_common_subject_v1_common_subject_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_common_subject_v1_common_subject_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_common_subject_v1_common_subject_proto_goTypes = []any{
 	(*CreateCommonSubjectRequest)(nil),   // 0: common_subject.v1.CreateCommonSubjectRequest
 	(*UpdateCommonSubjectRequest)(nil),   // 1: common_subject.v1.UpdateCommonSubjectRequest
@@ -480,26 +492,28 @@ var file_common_subject_v1_common_subject_proto_goTypes = []any{
 	(*DeleteCommonSubjectResponse)(nil),  // 7: common_subject.v1.DeleteCommonSubjectResponse
 	nil,                                  // 8: common_subject.v1.CreateCommonSubjectRequest.TranslationsEntry
 	nil,                                  // 9: common_subject.v1.UpdateCommonSubjectRequest.TranslationsEntry
+	nil,                                  // 10: common_subject.v1.CommonSubjectResponse.TranslationsEntry
 }
 var file_common_subject_v1_common_subject_proto_depIdxs = []int32{
-	8, // 0: common_subject.v1.CreateCommonSubjectRequest.translations:type_name -> common_subject.v1.CreateCommonSubjectRequest.TranslationsEntry
-	9, // 1: common_subject.v1.UpdateCommonSubjectRequest.translations:type_name -> common_subject.v1.UpdateCommonSubjectRequest.TranslationsEntry
-	5, // 2: common_subject.v1.GetAllCommonSubjectsResponse.common_subjects:type_name -> common_subject.v1.CommonSubjectResponse
-	0, // 3: common_subject.v1.CommonSubjectService.CreateCommonSubject:input_type -> common_subject.v1.CreateCommonSubjectRequest
-	2, // 4: common_subject.v1.CommonSubjectService.GetCommonSubject:input_type -> common_subject.v1.GetCommonSubjectRequest
-	3, // 5: common_subject.v1.CommonSubjectService.GetAllCommonSubjects:input_type -> common_subject.v1.GetAllCommonSubjectsRequest
-	1, // 6: common_subject.v1.CommonSubjectService.UpdateCommonSubject:input_type -> common_subject.v1.UpdateCommonSubjectRequest
-	4, // 7: common_subject.v1.CommonSubjectService.DeleteCommonSubject:input_type -> common_subject.v1.DeleteCommonSubjectRequest
-	5, // 8: common_subject.v1.CommonSubjectService.CreateCommonSubject:output_type -> common_subject.v1.CommonSubjectResponse
-	5, // 9: common_subject.v1.CommonSubjectService.GetCommonSubject:output_type -> common_subject.v1.CommonSubjectResponse
-	6, // 10: common_subject.v1.CommonSubjectService.GetAllCommonSubjects:output_type -> common_subject.v1.GetAllCommonSubjectsResponse
-	5, // 11: common_subject.v1.CommonSubjectService.UpdateCommonSubject:output_type -> common_subject.v1.CommonSubjectResponse
-	7, // 12: common_subject.v1.CommonSubjectService.DeleteCommonSubject:output_type -> common_subject.v1.DeleteCommonSubjectResponse
-	8, // [8:13] is the sub-list for method output_type
-	3, // [3:8] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	8,  // 0: common_subject.v1.CreateCommonSubjectRequest.translations:type_name -> common_subject.v1.CreateCommonSubjectRequest.TranslationsEntry
+	9,  // 1: common_subject.v1.UpdateCommonSubjectRequest.translations:type_name -> common_subject.v1.UpdateCommonSubjectRequest.TranslationsEntry
+	10, // 2: common_subject.v1.CommonSubjectResponse.translations:type_name -> common_subject.v1.CommonSubjectResponse.TranslationsEntry
+	5,  // 3: common_subject.v1.GetAllCommonSubjectsResponse.common_subjects:type_name -> common_subject.v1.CommonSubjectResponse
+	0,  // 4: common_subject.v1.CommonSubjectService.CreateCommonSubject:input_type -> common_subject.v1.CreateCommonSubjectRequest
+	2,  // 5: common_subject.v1.CommonSubjectService.GetCommonSubject:input_type -> common_subject.v1.GetCommonSubjectRequest
+	3,  // 6: common_subject.v1.CommonSubjectService.GetAllCommonSubjects:input_type -> common_subject.v1.GetAllCommonSubjectsRequest
+	1,  // 7: common_subject.v1.CommonSubjectService.UpdateCommonSubject:input_type -> common_subject.v1.UpdateCommonSubjectRequest
+	4,  // 8: common_subject.v1.CommonSubjectService.DeleteCommonSubject:input_type -> common_subject.v1.DeleteCommonSubjectRequest
+	5,  // 9: common_subject.v1.CommonSubjectService.CreateCommonSubject:output_type -> common_subject.v1.CommonSubjectResponse
+	5,  // 10: common_subject.v1.CommonSubjectService.GetCommonSubject:output_type -> common_subject.v1.CommonSubjectResponse
+	6,  // 11: common_subject.v1.CommonSubjectService.GetAllCommonSubjects:output_type -> common_subject.v1.GetAllCommonSubjectsResponse
+	5,  // 12: common_subject.v1.CommonSubjectService.UpdateCommonSubject:output_type -> common_subject.v1.CommonSubjectResponse
+	7,  // 13: common_subject.v1.CommonSubjectService.DeleteCommonSubject:output_type -> common_subject.v1.DeleteCommonSubjectResponse
+	9,  // [9:14] is the sub-list for method output_type
+	4,  // [4:9] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_common_subject_v1_common_subject_proto_init() }
@@ -514,7 +528,7 @@ func file_common_subject_v1_common_subject_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_subject_v1_common_subject_proto_rawDesc), len(file_common_subject_v1_common_subject_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
