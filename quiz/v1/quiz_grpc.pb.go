@@ -36,7 +36,7 @@ type QuizServiceClient interface {
 	GetQuiz(ctx context.Context, in *GetQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
 	GetAllQuizzes(ctx context.Context, in *GetAllQuizzesRequest, opts ...grpc.CallOption) (*GetAllQuizzesResponse, error)
 	GetMyQuizzes(ctx context.Context, in *GetMyQuizzesRequest, opts ...grpc.CallOption) (*GetAllQuizzesResponse, error)
-	PublishQuiz(ctx context.Context, in *PublishQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
+	PublishQuiz(ctx context.Context, in *PublishQuizRequest, opts ...grpc.CallOption) (*PublishQuizResponse, error)
 	UpdateQuiz(ctx context.Context, in *UpdateQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error)
 	DeleteQuiz(ctx context.Context, in *DeleteQuizRequest, opts ...grpc.CallOption) (*DeleteQuizResponse, error)
 }
@@ -89,9 +89,9 @@ func (c *quizServiceClient) GetMyQuizzes(ctx context.Context, in *GetMyQuizzesRe
 	return out, nil
 }
 
-func (c *quizServiceClient) PublishQuiz(ctx context.Context, in *PublishQuizRequest, opts ...grpc.CallOption) (*QuizResponse, error) {
+func (c *quizServiceClient) PublishQuiz(ctx context.Context, in *PublishQuizRequest, opts ...grpc.CallOption) (*PublishQuizResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(QuizResponse)
+	out := new(PublishQuizResponse)
 	err := c.cc.Invoke(ctx, QuizService_PublishQuiz_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -127,7 +127,7 @@ type QuizServiceServer interface {
 	GetQuiz(context.Context, *GetQuizRequest) (*QuizResponse, error)
 	GetAllQuizzes(context.Context, *GetAllQuizzesRequest) (*GetAllQuizzesResponse, error)
 	GetMyQuizzes(context.Context, *GetMyQuizzesRequest) (*GetAllQuizzesResponse, error)
-	PublishQuiz(context.Context, *PublishQuizRequest) (*QuizResponse, error)
+	PublishQuiz(context.Context, *PublishQuizRequest) (*PublishQuizResponse, error)
 	UpdateQuiz(context.Context, *UpdateQuizRequest) (*QuizResponse, error)
 	DeleteQuiz(context.Context, *DeleteQuizRequest) (*DeleteQuizResponse, error)
 	mustEmbedUnimplementedQuizServiceServer()
@@ -152,7 +152,7 @@ func (UnimplementedQuizServiceServer) GetAllQuizzes(context.Context, *GetAllQuiz
 func (UnimplementedQuizServiceServer) GetMyQuizzes(context.Context, *GetMyQuizzesRequest) (*GetAllQuizzesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetMyQuizzes not implemented")
 }
-func (UnimplementedQuizServiceServer) PublishQuiz(context.Context, *PublishQuizRequest) (*QuizResponse, error) {
+func (UnimplementedQuizServiceServer) PublishQuiz(context.Context, *PublishQuizRequest) (*PublishQuizResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method PublishQuiz not implemented")
 }
 func (UnimplementedQuizServiceServer) UpdateQuiz(context.Context, *UpdateQuizRequest) (*QuizResponse, error) {
