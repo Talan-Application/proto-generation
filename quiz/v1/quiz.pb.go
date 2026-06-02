@@ -22,13 +22,13 @@ const (
 )
 
 type CreateQuizRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Title         string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	Language      string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
-	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	SubjectId     int64                  `protobuf:"varint,4,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Title           string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Language        string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	Type            string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	CommonSubjectId int64                  `protobuf:"varint,4,opt,name=common_subject_id,json=commonSubjectId,proto3" json:"common_subject_id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *CreateQuizRequest) Reset() {
@@ -82,9 +82,9 @@ func (x *CreateQuizRequest) GetType() string {
 	return ""
 }
 
-func (x *CreateQuizRequest) GetSubjectId() int64 {
+func (x *CreateQuizRequest) GetCommonSubjectId() int64 {
 	if x != nil {
-		return x.SubjectId
+		return x.CommonSubjectId
 	}
 	return 0
 }
@@ -402,18 +402,18 @@ func (x *DeleteQuizRequest) GetId() int64 {
 }
 
 type QuizResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Language      string                 `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
-	AuthorId      int64                  `protobuf:"varint,4,opt,name=author_id,json=authorId,proto3" json:"author_id,omitempty"`
-	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
-	Type          string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
-	SubjectId     int64                  `protobuf:"varint,7,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     int64                  `protobuf:"varint,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Id              int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title           string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Language        string                 `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	AuthorId        int64                  `protobuf:"varint,4,opt,name=author_id,json=authorId,proto3" json:"author_id,omitempty"`
+	Status          string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
+	Type            string                 `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
+	CommonSubjectId int64                  `protobuf:"varint,7,opt,name=common_subject_id,json=commonSubjectId,proto3" json:"common_subject_id,omitempty"`
+	CreatedAt       int64                  `protobuf:"varint,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt       int64                  `protobuf:"varint,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *QuizResponse) Reset() {
@@ -488,9 +488,9 @@ func (x *QuizResponse) GetType() string {
 	return ""
 }
 
-func (x *QuizResponse) GetSubjectId() int64 {
+func (x *QuizResponse) GetCommonSubjectId() int64 {
 	if x != nil {
-		return x.SubjectId
+		return x.CommonSubjectId
 	}
 	return 0
 }
@@ -2002,13 +2002,12 @@ var File_quiz_v1_quiz_proto protoreflect.FileDescriptor
 
 const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\n" +
-	"\x12quiz/v1/quiz.proto\x12\aquiz.v1\"x\n" +
+	"\x12quiz/v1/quiz.proto\x12\aquiz.v1\"\x85\x01\n" +
 	"\x11CreateQuizRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\tR\x04type\x12\x1d\n" +
-	"\n" +
-	"subject_id\x18\x04 \x01(\x03R\tsubjectId\"i\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\x12*\n" +
+	"\x11common_subject_id\x18\x04 \x01(\x03R\x0fcommonSubjectId\"i\n" +
 	"\x11UpdateQuizRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1a\n" +
@@ -2031,16 +2030,15 @@ const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\x12PublishQuizRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"#\n" +
 	"\x11DeleteQuizRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xf6\x01\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\x83\x02\n" +
 	"\fQuizResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1a\n" +
 	"\blanguage\x18\x03 \x01(\tR\blanguage\x12\x1b\n" +
 	"\tauthor_id\x18\x04 \x01(\x03R\bauthorId\x12\x16\n" +
 	"\x06status\x18\x05 \x01(\tR\x06status\x12\x12\n" +
-	"\x04type\x18\x06 \x01(\tR\x04type\x12\x1d\n" +
-	"\n" +
-	"subject_id\x18\a \x01(\x03R\tsubjectId\x12\x1d\n" +
+	"\x04type\x18\x06 \x01(\tR\x04type\x12*\n" +
+	"\x11common_subject_id\x18\a \x01(\x03R\x0fcommonSubjectId\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\b \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
