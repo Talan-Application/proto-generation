@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CommonSubjectService_CreateCommonSubject_FullMethodName  = "/common_subject.v1.CommonSubjectService/CreateCommonSubject"
-	CommonSubjectService_GetCommonSubject_FullMethodName     = "/common_subject.v1.CommonSubjectService/GetCommonSubject"
-	CommonSubjectService_GetAllCommonSubjects_FullMethodName = "/common_subject.v1.CommonSubjectService/GetAllCommonSubjects"
-	CommonSubjectService_UpdateCommonSubject_FullMethodName  = "/common_subject.v1.CommonSubjectService/UpdateCommonSubject"
-	CommonSubjectService_DeleteCommonSubject_FullMethodName  = "/common_subject.v1.CommonSubjectService/DeleteCommonSubject"
+	CommonSubjectService_CreateCommonSubject_FullMethodName     = "/common_subject.v1.CommonSubjectService/CreateCommonSubject"
+	CommonSubjectService_GetCommonSubject_FullMethodName        = "/common_subject.v1.CommonSubjectService/GetCommonSubject"
+	CommonSubjectService_GetAllCommonSubjects_FullMethodName    = "/common_subject.v1.CommonSubjectService/GetAllCommonSubjects"
+	CommonSubjectService_GetCommonSubjectsLookup_FullMethodName = "/common_subject.v1.CommonSubjectService/GetCommonSubjectsLookup"
+	CommonSubjectService_UpdateCommonSubject_FullMethodName     = "/common_subject.v1.CommonSubjectService/UpdateCommonSubject"
+	CommonSubjectService_DeleteCommonSubject_FullMethodName     = "/common_subject.v1.CommonSubjectService/DeleteCommonSubject"
 )
 
 // CommonSubjectServiceClient is the client API for CommonSubjectService service.
@@ -33,6 +34,7 @@ type CommonSubjectServiceClient interface {
 	CreateCommonSubject(ctx context.Context, in *CreateCommonSubjectRequest, opts ...grpc.CallOption) (*CommonSubjectResponse, error)
 	GetCommonSubject(ctx context.Context, in *GetCommonSubjectRequest, opts ...grpc.CallOption) (*CommonSubjectResponse, error)
 	GetAllCommonSubjects(ctx context.Context, in *GetAllCommonSubjectsRequest, opts ...grpc.CallOption) (*GetAllCommonSubjectsResponse, error)
+	GetCommonSubjectsLookup(ctx context.Context, in *GetCommonSubjectsLookupRequest, opts ...grpc.CallOption) (*GetCommonSubjectsLookupResponse, error)
 	UpdateCommonSubject(ctx context.Context, in *UpdateCommonSubjectRequest, opts ...grpc.CallOption) (*CommonSubjectResponse, error)
 	DeleteCommonSubject(ctx context.Context, in *DeleteCommonSubjectRequest, opts ...grpc.CallOption) (*DeleteCommonSubjectResponse, error)
 }
@@ -75,6 +77,16 @@ func (c *commonSubjectServiceClient) GetAllCommonSubjects(ctx context.Context, i
 	return out, nil
 }
 
+func (c *commonSubjectServiceClient) GetCommonSubjectsLookup(ctx context.Context, in *GetCommonSubjectsLookupRequest, opts ...grpc.CallOption) (*GetCommonSubjectsLookupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommonSubjectsLookupResponse)
+	err := c.cc.Invoke(ctx, CommonSubjectService_GetCommonSubjectsLookup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *commonSubjectServiceClient) UpdateCommonSubject(ctx context.Context, in *UpdateCommonSubjectRequest, opts ...grpc.CallOption) (*CommonSubjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonSubjectResponse)
@@ -102,6 +114,7 @@ type CommonSubjectServiceServer interface {
 	CreateCommonSubject(context.Context, *CreateCommonSubjectRequest) (*CommonSubjectResponse, error)
 	GetCommonSubject(context.Context, *GetCommonSubjectRequest) (*CommonSubjectResponse, error)
 	GetAllCommonSubjects(context.Context, *GetAllCommonSubjectsRequest) (*GetAllCommonSubjectsResponse, error)
+	GetCommonSubjectsLookup(context.Context, *GetCommonSubjectsLookupRequest) (*GetCommonSubjectsLookupResponse, error)
 	UpdateCommonSubject(context.Context, *UpdateCommonSubjectRequest) (*CommonSubjectResponse, error)
 	DeleteCommonSubject(context.Context, *DeleteCommonSubjectRequest) (*DeleteCommonSubjectResponse, error)
 	mustEmbedUnimplementedCommonSubjectServiceServer()
@@ -122,6 +135,9 @@ func (UnimplementedCommonSubjectServiceServer) GetCommonSubject(context.Context,
 }
 func (UnimplementedCommonSubjectServiceServer) GetAllCommonSubjects(context.Context, *GetAllCommonSubjectsRequest) (*GetAllCommonSubjectsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAllCommonSubjects not implemented")
+}
+func (UnimplementedCommonSubjectServiceServer) GetCommonSubjectsLookup(context.Context, *GetCommonSubjectsLookupRequest) (*GetCommonSubjectsLookupResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetCommonSubjectsLookup not implemented")
 }
 func (UnimplementedCommonSubjectServiceServer) UpdateCommonSubject(context.Context, *UpdateCommonSubjectRequest) (*CommonSubjectResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UpdateCommonSubject not implemented")
@@ -204,6 +220,24 @@ func _CommonSubjectService_GetAllCommonSubjects_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CommonSubjectService_GetCommonSubjectsLookup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommonSubjectsLookupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommonSubjectServiceServer).GetCommonSubjectsLookup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommonSubjectService_GetCommonSubjectsLookup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommonSubjectServiceServer).GetCommonSubjectsLookup(ctx, req.(*GetCommonSubjectsLookupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CommonSubjectService_UpdateCommonSubject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateCommonSubjectRequest)
 	if err := dec(in); err != nil {
@@ -258,6 +292,10 @@ var CommonSubjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAllCommonSubjects",
 			Handler:    _CommonSubjectService_GetAllCommonSubjects_Handler,
+		},
+		{
+			MethodName: "GetCommonSubjectsLookup",
+			Handler:    _CommonSubjectService_GetCommonSubjectsLookup_Handler,
 		},
 		{
 			MethodName: "UpdateCommonSubject",
