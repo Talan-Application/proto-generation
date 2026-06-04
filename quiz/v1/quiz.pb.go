@@ -27,6 +27,7 @@ type CreateQuizRequest struct {
 	Language        string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	Type            string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	CommonSubjectId int64                  `protobuf:"varint,4,opt,name=common_subject_id,json=commonSubjectId,proto3" json:"common_subject_id,omitempty"`
+	IsEntStandard   bool                   `protobuf:"varint,5,opt,name=is_ent_standard,json=isEntStandard,proto3" json:"is_ent_standard,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -89,12 +90,20 @@ func (x *CreateQuizRequest) GetCommonSubjectId() int64 {
 	return 0
 }
 
+func (x *CreateQuizRequest) GetIsEntStandard() bool {
+	if x != nil {
+		return x.IsEntStandard
+	}
+	return false
+}
+
 type UpdateQuizRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Language      string                 `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
 	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	IsEntStandard bool                   `protobuf:"varint,5,opt,name=is_ent_standard,json=isEntStandard,proto3" json:"is_ent_standard,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -155,6 +164,13 @@ func (x *UpdateQuizRequest) GetType() string {
 		return x.Type
 	}
 	return ""
+}
+
+func (x *UpdateQuizRequest) GetIsEntStandard() bool {
+	if x != nil {
+		return x.IsEntStandard
+	}
+	return false
 }
 
 type GetQuizRequest struct {
@@ -412,6 +428,7 @@ type QuizResponse struct {
 	CommonSubjectId int64                  `protobuf:"varint,7,opt,name=common_subject_id,json=commonSubjectId,proto3" json:"common_subject_id,omitempty"`
 	CreatedAt       int64                  `protobuf:"varint,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt       int64                  `protobuf:"varint,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	IsEntStandard   bool                   `protobuf:"varint,10,opt,name=is_ent_standard,json=isEntStandard,proto3" json:"is_ent_standard,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -507,6 +524,13 @@ func (x *QuizResponse) GetUpdatedAt() int64 {
 		return x.UpdatedAt
 	}
 	return 0
+}
+
+func (x *QuizResponse) GetIsEntStandard() bool {
+	if x != nil {
+		return x.IsEntStandard
+	}
+	return false
 }
 
 type GetAllQuizzesResponse struct {
@@ -2002,17 +2026,19 @@ var File_quiz_v1_quiz_proto protoreflect.FileDescriptor
 
 const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\n" +
-	"\x12quiz/v1/quiz.proto\x12\aquiz.v1\"\x85\x01\n" +
+	"\x12quiz/v1/quiz.proto\x12\aquiz.v1\"\xad\x01\n" +
 	"\x11CreateQuizRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x12\n" +
 	"\x04type\x18\x03 \x01(\tR\x04type\x12*\n" +
-	"\x11common_subject_id\x18\x04 \x01(\x03R\x0fcommonSubjectId\"i\n" +
+	"\x11common_subject_id\x18\x04 \x01(\x03R\x0fcommonSubjectId\x12&\n" +
+	"\x0fis_ent_standard\x18\x05 \x01(\bR\risEntStandard\"\x91\x01\n" +
 	"\x11UpdateQuizRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1a\n" +
 	"\blanguage\x18\x03 \x01(\tR\blanguage\x12\x12\n" +
-	"\x04type\x18\x04 \x01(\tR\x04type\" \n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x12&\n" +
+	"\x0fis_ent_standard\x18\x05 \x01(\bR\risEntStandard\" \n" +
 	"\x0eGetQuizRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"\x8b\x01\n" +
 	"\x14GetAllQuizzesRequest\x12\x19\n" +
@@ -2030,7 +2056,7 @@ const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\x12PublishQuizRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"#\n" +
 	"\x11DeleteQuizRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\x83\x02\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xab\x02\n" +
 	"\fQuizResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1a\n" +
@@ -2042,7 +2068,9 @@ const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\b \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\t \x01(\x03R\tupdatedAt\"H\n" +
+	"updated_at\x18\t \x01(\x03R\tupdatedAt\x12&\n" +
+	"\x0fis_ent_standard\x18\n" +
+	" \x01(\bR\risEntStandard\"H\n" +
 	"\x15GetAllQuizzesResponse\x12/\n" +
 	"\aquizzes\x18\x01 \x03(\v2\x15.quiz.v1.QuizResponseR\aquizzes\".\n" +
 	"\x12DeleteQuizResponse\x12\x18\n" +
