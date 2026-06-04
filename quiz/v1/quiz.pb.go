@@ -1589,7 +1589,7 @@ func (x *DeleteAnswerResponse) GetMessage() string {
 type AnswerSubmission struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	QuestionId    int64                  `protobuf:"varint,1,opt,name=question_id,json=questionId,proto3" json:"question_id,omitempty"`
-	AnswerId      int64                  `protobuf:"varint,2,opt,name=answer_id,json=answerId,proto3" json:"answer_id,omitempty"`
+	AnswerIds     []int64                `protobuf:"varint,2,rep,packed,name=answer_ids,json=answerIds,proto3" json:"answer_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1631,11 +1631,11 @@ func (x *AnswerSubmission) GetQuestionId() int64 {
 	return 0
 }
 
-func (x *AnswerSubmission) GetAnswerId() int64 {
+func (x *AnswerSubmission) GetAnswerIds() []int64 {
 	if x != nil {
-		return x.AnswerId
+		return x.AnswerIds
 	}
-	return 0
+	return nil
 }
 
 type SubmitQuizRequest struct {
@@ -1691,13 +1691,14 @@ func (x *SubmitQuizRequest) GetAnswers() []*AnswerSubmission {
 }
 
 type QuestionResult struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	QuestionId       int64                  `protobuf:"varint,1,opt,name=question_id,json=questionId,proto3" json:"question_id,omitempty"`
-	SelectedAnswerId int64                  `protobuf:"varint,2,opt,name=selected_answer_id,json=selectedAnswerId,proto3" json:"selected_answer_id,omitempty"`
-	CorrectAnswerId  int64                  `protobuf:"varint,3,opt,name=correct_answer_id,json=correctAnswerId,proto3" json:"correct_answer_id,omitempty"`
-	IsCorrect        bool                   `protobuf:"varint,4,opt,name=is_correct,json=isCorrect,proto3" json:"is_correct,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	QuestionId        int64                  `protobuf:"varint,1,opt,name=question_id,json=questionId,proto3" json:"question_id,omitempty"`
+	SelectedAnswerIds []int64                `protobuf:"varint,2,rep,packed,name=selected_answer_ids,json=selectedAnswerIds,proto3" json:"selected_answer_ids,omitempty"`
+	CorrectAnswerIds  []int64                `protobuf:"varint,3,rep,packed,name=correct_answer_ids,json=correctAnswerIds,proto3" json:"correct_answer_ids,omitempty"`
+	Score             float64                `protobuf:"fixed64,4,opt,name=score,proto3" json:"score,omitempty"`
+	MaxScore          float64                `protobuf:"fixed64,5,opt,name=max_score,json=maxScore,proto3" json:"max_score,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *QuestionResult) Reset() {
@@ -1737,36 +1738,46 @@ func (x *QuestionResult) GetQuestionId() int64 {
 	return 0
 }
 
-func (x *QuestionResult) GetSelectedAnswerId() int64 {
+func (x *QuestionResult) GetSelectedAnswerIds() []int64 {
 	if x != nil {
-		return x.SelectedAnswerId
+		return x.SelectedAnswerIds
+	}
+	return nil
+}
+
+func (x *QuestionResult) GetCorrectAnswerIds() []int64 {
+	if x != nil {
+		return x.CorrectAnswerIds
+	}
+	return nil
+}
+
+func (x *QuestionResult) GetScore() float64 {
+	if x != nil {
+		return x.Score
 	}
 	return 0
 }
 
-func (x *QuestionResult) GetCorrectAnswerId() int64 {
+func (x *QuestionResult) GetMaxScore() float64 {
 	if x != nil {
-		return x.CorrectAnswerId
+		return x.MaxScore
 	}
 	return 0
-}
-
-func (x *QuestionResult) GetIsCorrect() bool {
-	if x != nil {
-		return x.IsCorrect
-	}
-	return false
 }
 
 type SubmitQuizResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	ResultId       int64                  `protobuf:"varint,1,opt,name=result_id,json=resultId,proto3" json:"result_id,omitempty"`
-	TotalQuestions int32                  `protobuf:"varint,2,opt,name=total_questions,json=totalQuestions,proto3" json:"total_questions,omitempty"`
-	CorrectAnswers int32                  `protobuf:"varint,3,opt,name=correct_answers,json=correctAnswers,proto3" json:"correct_answers,omitempty"`
-	Score          float64                `protobuf:"fixed64,4,opt,name=score,proto3" json:"score,omitempty"`
-	Results        []*QuestionResult      `protobuf:"bytes,5,rep,name=results,proto3" json:"results,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	ResultId              int64                  `protobuf:"varint,1,opt,name=result_id,json=resultId,proto3" json:"result_id,omitempty"`
+	TotalQuestionsCount   int32                  `protobuf:"varint,2,opt,name=total_questions_count,json=totalQuestionsCount,proto3" json:"total_questions_count,omitempty"`
+	CorrectAnswersCount   int32                  `protobuf:"varint,3,opt,name=correct_answers_count,json=correctAnswersCount,proto3" json:"correct_answers_count,omitempty"`
+	IncorrectAnswersCount int32                  `protobuf:"varint,4,opt,name=incorrect_answers_count,json=incorrectAnswersCount,proto3" json:"incorrect_answers_count,omitempty"`
+	UnansweredQuestions   int32                  `protobuf:"varint,5,opt,name=unanswered_questions,json=unansweredQuestions,proto3" json:"unanswered_questions,omitempty"`
+	Score                 float64                `protobuf:"fixed64,6,opt,name=score,proto3" json:"score,omitempty"`
+	MaxScore              float64                `protobuf:"fixed64,7,opt,name=max_score,json=maxScore,proto3" json:"max_score,omitempty"`
+	Results               []*QuestionResult      `protobuf:"bytes,8,rep,name=results,proto3" json:"results,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *SubmitQuizResponse) Reset() {
@@ -1806,16 +1817,30 @@ func (x *SubmitQuizResponse) GetResultId() int64 {
 	return 0
 }
 
-func (x *SubmitQuizResponse) GetTotalQuestions() int32 {
+func (x *SubmitQuizResponse) GetTotalQuestionsCount() int32 {
 	if x != nil {
-		return x.TotalQuestions
+		return x.TotalQuestionsCount
 	}
 	return 0
 }
 
-func (x *SubmitQuizResponse) GetCorrectAnswers() int32 {
+func (x *SubmitQuizResponse) GetCorrectAnswersCount() int32 {
 	if x != nil {
-		return x.CorrectAnswers
+		return x.CorrectAnswersCount
+	}
+	return 0
+}
+
+func (x *SubmitQuizResponse) GetIncorrectAnswersCount() int32 {
+	if x != nil {
+		return x.IncorrectAnswersCount
+	}
+	return 0
+}
+
+func (x *SubmitQuizResponse) GetUnansweredQuestions() int32 {
+	if x != nil {
+		return x.UnansweredQuestions
 	}
 	return 0
 }
@@ -1823,6 +1848,13 @@ func (x *SubmitQuizResponse) GetCorrectAnswers() int32 {
 func (x *SubmitQuizResponse) GetScore() float64 {
 	if x != nil {
 		return x.Score
+	}
+	return 0
+}
+
+func (x *SubmitQuizResponse) GetMaxScore() float64 {
+	if x != nil {
+		return x.MaxScore
 	}
 	return 0
 }
@@ -1887,16 +1919,19 @@ func (x *GetQuizResultsRequest) GetUserId() int64 {
 }
 
 type QuizResultSummary struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	QuizId         int64                  `protobuf:"varint,2,opt,name=quiz_id,json=quizId,proto3" json:"quiz_id,omitempty"`
-	UserId         int64                  `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Score          float64                `protobuf:"fixed64,4,opt,name=score,proto3" json:"score,omitempty"`
-	TotalQuestions int32                  `protobuf:"varint,5,opt,name=total_questions,json=totalQuestions,proto3" json:"total_questions,omitempty"`
-	CorrectAnswers int32                  `protobuf:"varint,6,opt,name=correct_answers,json=correctAnswers,proto3" json:"correct_answers,omitempty"`
-	SubmittedAt    int64                  `protobuf:"varint,7,opt,name=submitted_at,json=submittedAt,proto3" json:"submitted_at,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	Id                    int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	QuizId                int64                  `protobuf:"varint,2,opt,name=quiz_id,json=quizId,proto3" json:"quiz_id,omitempty"`
+	UserId                int64                  `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Score                 float64                `protobuf:"fixed64,4,opt,name=score,proto3" json:"score,omitempty"`
+	MaxScore              float64                `protobuf:"fixed64,5,opt,name=max_score,json=maxScore,proto3" json:"max_score,omitempty"`
+	TotalQuestionsCount   int32                  `protobuf:"varint,6,opt,name=total_questions_count,json=totalQuestionsCount,proto3" json:"total_questions_count,omitempty"`
+	CorrectAnswersCount   int32                  `protobuf:"varint,7,opt,name=correct_answers_count,json=correctAnswersCount,proto3" json:"correct_answers_count,omitempty"`
+	IncorrectAnswersCount int32                  `protobuf:"varint,8,opt,name=incorrect_answers_count,json=incorrectAnswersCount,proto3" json:"incorrect_answers_count,omitempty"`
+	UnansweredQuestions   int32                  `protobuf:"varint,9,opt,name=unanswered_questions,json=unansweredQuestions,proto3" json:"unanswered_questions,omitempty"`
+	SubmittedAt           int64                  `protobuf:"varint,10,opt,name=submitted_at,json=submittedAt,proto3" json:"submitted_at,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *QuizResultSummary) Reset() {
@@ -1957,16 +1992,37 @@ func (x *QuizResultSummary) GetScore() float64 {
 	return 0
 }
 
-func (x *QuizResultSummary) GetTotalQuestions() int32 {
+func (x *QuizResultSummary) GetMaxScore() float64 {
 	if x != nil {
-		return x.TotalQuestions
+		return x.MaxScore
 	}
 	return 0
 }
 
-func (x *QuizResultSummary) GetCorrectAnswers() int32 {
+func (x *QuizResultSummary) GetTotalQuestionsCount() int32 {
 	if x != nil {
-		return x.CorrectAnswers
+		return x.TotalQuestionsCount
+	}
+	return 0
+}
+
+func (x *QuizResultSummary) GetCorrectAnswersCount() int32 {
+	if x != nil {
+		return x.CorrectAnswersCount
+	}
+	return 0
+}
+
+func (x *QuizResultSummary) GetIncorrectAnswersCount() int32 {
+	if x != nil {
+		return x.IncorrectAnswersCount
+	}
+	return 0
+}
+
+func (x *QuizResultSummary) GetUnansweredQuestions() int32 {
+	if x != nil {
+		return x.UnansweredQuestions
 	}
 	return 0
 }
@@ -2146,38 +2202,46 @@ const file_quiz_v1_quiz_proto_rawDesc = "" +
 	"\x15GetAllAnswersResponse\x121\n" +
 	"\aanswers\x18\x01 \x03(\v2\x17.quiz.v1.AnswerResponseR\aanswers\"0\n" +
 	"\x14DeleteAnswerResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"P\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"R\n" +
 	"\x10AnswerSubmission\x12\x1f\n" +
 	"\vquestion_id\x18\x01 \x01(\x03R\n" +
-	"questionId\x12\x1b\n" +
-	"\tanswer_id\x18\x02 \x01(\x03R\banswerId\"a\n" +
+	"questionId\x12\x1d\n" +
+	"\n" +
+	"answer_ids\x18\x02 \x03(\x03R\tanswerIds\"a\n" +
 	"\x11SubmitQuizRequest\x12\x17\n" +
 	"\aquiz_id\x18\x01 \x01(\x03R\x06quizId\x123\n" +
-	"\aanswers\x18\x02 \x03(\v2\x19.quiz.v1.AnswerSubmissionR\aanswers\"\xaa\x01\n" +
+	"\aanswers\x18\x02 \x03(\v2\x19.quiz.v1.AnswerSubmissionR\aanswers\"\xc2\x01\n" +
 	"\x0eQuestionResult\x12\x1f\n" +
 	"\vquestion_id\x18\x01 \x01(\x03R\n" +
-	"questionId\x12,\n" +
-	"\x12selected_answer_id\x18\x02 \x01(\x03R\x10selectedAnswerId\x12*\n" +
-	"\x11correct_answer_id\x18\x03 \x01(\x03R\x0fcorrectAnswerId\x12\x1d\n" +
-	"\n" +
-	"is_correct\x18\x04 \x01(\bR\tisCorrect\"\xcc\x01\n" +
+	"questionId\x12.\n" +
+	"\x13selected_answer_ids\x18\x02 \x03(\x03R\x11selectedAnswerIds\x12,\n" +
+	"\x12correct_answer_ids\x18\x03 \x03(\x03R\x10correctAnswerIds\x12\x14\n" +
+	"\x05score\x18\x04 \x01(\x01R\x05score\x12\x1b\n" +
+	"\tmax_score\x18\x05 \x01(\x01R\bmaxScore\"\xea\x02\n" +
 	"\x12SubmitQuizResponse\x12\x1b\n" +
-	"\tresult_id\x18\x01 \x01(\x03R\bresultId\x12'\n" +
-	"\x0ftotal_questions\x18\x02 \x01(\x05R\x0etotalQuestions\x12'\n" +
-	"\x0fcorrect_answers\x18\x03 \x01(\x05R\x0ecorrectAnswers\x12\x14\n" +
-	"\x05score\x18\x04 \x01(\x01R\x05score\x121\n" +
-	"\aresults\x18\x05 \x03(\v2\x17.quiz.v1.QuestionResultR\aresults\"I\n" +
+	"\tresult_id\x18\x01 \x01(\x03R\bresultId\x122\n" +
+	"\x15total_questions_count\x18\x02 \x01(\x05R\x13totalQuestionsCount\x122\n" +
+	"\x15correct_answers_count\x18\x03 \x01(\x05R\x13correctAnswersCount\x126\n" +
+	"\x17incorrect_answers_count\x18\x04 \x01(\x05R\x15incorrectAnswersCount\x121\n" +
+	"\x14unanswered_questions\x18\x05 \x01(\x05R\x13unansweredQuestions\x12\x14\n" +
+	"\x05score\x18\x06 \x01(\x01R\x05score\x12\x1b\n" +
+	"\tmax_score\x18\a \x01(\x01R\bmaxScore\x121\n" +
+	"\aresults\x18\b \x03(\v2\x17.quiz.v1.QuestionResultR\aresults\"I\n" +
 	"\x15GetQuizResultsRequest\x12\x17\n" +
 	"\aquiz_id\x18\x01 \x01(\x03R\x06quizId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x03R\x06userId\"\xe0\x01\n" +
+	"\auser_id\x18\x02 \x01(\x03R\x06userId\"\xfe\x02\n" +
 	"\x11QuizResultSummary\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\aquiz_id\x18\x02 \x01(\x03R\x06quizId\x12\x17\n" +
 	"\auser_id\x18\x03 \x01(\x03R\x06userId\x12\x14\n" +
-	"\x05score\x18\x04 \x01(\x01R\x05score\x12'\n" +
-	"\x0ftotal_questions\x18\x05 \x01(\x05R\x0etotalQuestions\x12'\n" +
-	"\x0fcorrect_answers\x18\x06 \x01(\x05R\x0ecorrectAnswers\x12!\n" +
-	"\fsubmitted_at\x18\a \x01(\x03R\vsubmittedAt\"N\n" +
+	"\x05score\x18\x04 \x01(\x01R\x05score\x12\x1b\n" +
+	"\tmax_score\x18\x05 \x01(\x01R\bmaxScore\x122\n" +
+	"\x15total_questions_count\x18\x06 \x01(\x05R\x13totalQuestionsCount\x122\n" +
+	"\x15correct_answers_count\x18\a \x01(\x05R\x13correctAnswersCount\x126\n" +
+	"\x17incorrect_answers_count\x18\b \x01(\x05R\x15incorrectAnswersCount\x121\n" +
+	"\x14unanswered_questions\x18\t \x01(\x05R\x13unansweredQuestions\x12!\n" +
+	"\fsubmitted_at\x18\n" +
+	" \x01(\x03R\vsubmittedAt\"N\n" +
 	"\x16GetQuizResultsResponse\x124\n" +
 	"\aresults\x18\x01 \x03(\v2\x1a.quiz.v1.QuizResultSummaryR\aresults2\xf9\x03\n" +
 	"\vQuizService\x12?\n" +
