@@ -349,21 +349,21 @@ var QuizService_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	QuestionService_CreateQuestion_FullMethodName  = "/quiz.v1.QuestionService/CreateQuestion"
-	QuestionService_GetQuestion_FullMethodName     = "/quiz.v1.QuestionService/GetQuestion"
-	QuestionService_GetAllQuestions_FullMethodName = "/quiz.v1.QuestionService/GetAllQuestions"
-	QuestionService_UpdateQuestion_FullMethodName  = "/quiz.v1.QuestionService/UpdateQuestion"
-	QuestionService_DeleteQuestion_FullMethodName  = "/quiz.v1.QuestionService/DeleteQuestion"
+	QuestionService_CreateQuestionWithAnswers_FullMethodName = "/quiz.v1.QuestionService/CreateQuestionWithAnswers"
+	QuestionService_GetQuestion_FullMethodName               = "/quiz.v1.QuestionService/GetQuestion"
+	QuestionService_GetAllQuestions_FullMethodName           = "/quiz.v1.QuestionService/GetAllQuestions"
+	QuestionService_UpdateQuestionWithAnswers_FullMethodName = "/quiz.v1.QuestionService/UpdateQuestionWithAnswers"
+	QuestionService_DeleteQuestion_FullMethodName            = "/quiz.v1.QuestionService/DeleteQuestion"
 )
 
 // QuestionServiceClient is the client API for QuestionService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type QuestionServiceClient interface {
-	CreateQuestion(ctx context.Context, in *CreateQuestionRequest, opts ...grpc.CallOption) (*QuestionResponse, error)
-	GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*QuestionResponse, error)
-	GetAllQuestions(ctx context.Context, in *GetAllQuestionsRequest, opts ...grpc.CallOption) (*GetAllQuestionsResponse, error)
-	UpdateQuestion(ctx context.Context, in *UpdateQuestionRequest, opts ...grpc.CallOption) (*QuestionResponse, error)
+	CreateQuestionWithAnswers(ctx context.Context, in *CreateQuestionWithAnswersRequest, opts ...grpc.CallOption) (*QuestionWithAnswersResponse, error)
+	GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*QuestionWithAnswersResponse, error)
+	GetAllQuestions(ctx context.Context, in *GetAllQuestionsRequest, opts ...grpc.CallOption) (*GetAllQuestionsWithAnswersResponse, error)
+	UpdateQuestionWithAnswers(ctx context.Context, in *UpdateQuestionWithAnswersRequest, opts ...grpc.CallOption) (*QuestionWithAnswersResponse, error)
 	DeleteQuestion(ctx context.Context, in *DeleteQuestionRequest, opts ...grpc.CallOption) (*DeleteQuestionResponse, error)
 }
 
@@ -375,19 +375,19 @@ func NewQuestionServiceClient(cc grpc.ClientConnInterface) QuestionServiceClient
 	return &questionServiceClient{cc}
 }
 
-func (c *questionServiceClient) CreateQuestion(ctx context.Context, in *CreateQuestionRequest, opts ...grpc.CallOption) (*QuestionResponse, error) {
+func (c *questionServiceClient) CreateQuestionWithAnswers(ctx context.Context, in *CreateQuestionWithAnswersRequest, opts ...grpc.CallOption) (*QuestionWithAnswersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(QuestionResponse)
-	err := c.cc.Invoke(ctx, QuestionService_CreateQuestion_FullMethodName, in, out, cOpts...)
+	out := new(QuestionWithAnswersResponse)
+	err := c.cc.Invoke(ctx, QuestionService_CreateQuestionWithAnswers_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *questionServiceClient) GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*QuestionResponse, error) {
+func (c *questionServiceClient) GetQuestion(ctx context.Context, in *GetQuestionRequest, opts ...grpc.CallOption) (*QuestionWithAnswersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(QuestionResponse)
+	out := new(QuestionWithAnswersResponse)
 	err := c.cc.Invoke(ctx, QuestionService_GetQuestion_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -395,9 +395,9 @@ func (c *questionServiceClient) GetQuestion(ctx context.Context, in *GetQuestion
 	return out, nil
 }
 
-func (c *questionServiceClient) GetAllQuestions(ctx context.Context, in *GetAllQuestionsRequest, opts ...grpc.CallOption) (*GetAllQuestionsResponse, error) {
+func (c *questionServiceClient) GetAllQuestions(ctx context.Context, in *GetAllQuestionsRequest, opts ...grpc.CallOption) (*GetAllQuestionsWithAnswersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllQuestionsResponse)
+	out := new(GetAllQuestionsWithAnswersResponse)
 	err := c.cc.Invoke(ctx, QuestionService_GetAllQuestions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -405,10 +405,10 @@ func (c *questionServiceClient) GetAllQuestions(ctx context.Context, in *GetAllQ
 	return out, nil
 }
 
-func (c *questionServiceClient) UpdateQuestion(ctx context.Context, in *UpdateQuestionRequest, opts ...grpc.CallOption) (*QuestionResponse, error) {
+func (c *questionServiceClient) UpdateQuestionWithAnswers(ctx context.Context, in *UpdateQuestionWithAnswersRequest, opts ...grpc.CallOption) (*QuestionWithAnswersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(QuestionResponse)
-	err := c.cc.Invoke(ctx, QuestionService_UpdateQuestion_FullMethodName, in, out, cOpts...)
+	out := new(QuestionWithAnswersResponse)
+	err := c.cc.Invoke(ctx, QuestionService_UpdateQuestionWithAnswers_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -429,10 +429,10 @@ func (c *questionServiceClient) DeleteQuestion(ctx context.Context, in *DeleteQu
 // All implementations must embed UnimplementedQuestionServiceServer
 // for forward compatibility.
 type QuestionServiceServer interface {
-	CreateQuestion(context.Context, *CreateQuestionRequest) (*QuestionResponse, error)
-	GetQuestion(context.Context, *GetQuestionRequest) (*QuestionResponse, error)
-	GetAllQuestions(context.Context, *GetAllQuestionsRequest) (*GetAllQuestionsResponse, error)
-	UpdateQuestion(context.Context, *UpdateQuestionRequest) (*QuestionResponse, error)
+	CreateQuestionWithAnswers(context.Context, *CreateQuestionWithAnswersRequest) (*QuestionWithAnswersResponse, error)
+	GetQuestion(context.Context, *GetQuestionRequest) (*QuestionWithAnswersResponse, error)
+	GetAllQuestions(context.Context, *GetAllQuestionsRequest) (*GetAllQuestionsWithAnswersResponse, error)
+	UpdateQuestionWithAnswers(context.Context, *UpdateQuestionWithAnswersRequest) (*QuestionWithAnswersResponse, error)
 	DeleteQuestion(context.Context, *DeleteQuestionRequest) (*DeleteQuestionResponse, error)
 	mustEmbedUnimplementedQuestionServiceServer()
 }
@@ -444,17 +444,17 @@ type QuestionServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedQuestionServiceServer struct{}
 
-func (UnimplementedQuestionServiceServer) CreateQuestion(context.Context, *CreateQuestionRequest) (*QuestionResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method CreateQuestion not implemented")
+func (UnimplementedQuestionServiceServer) CreateQuestionWithAnswers(context.Context, *CreateQuestionWithAnswersRequest) (*QuestionWithAnswersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateQuestionWithAnswers not implemented")
 }
-func (UnimplementedQuestionServiceServer) GetQuestion(context.Context, *GetQuestionRequest) (*QuestionResponse, error) {
+func (UnimplementedQuestionServiceServer) GetQuestion(context.Context, *GetQuestionRequest) (*QuestionWithAnswersResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetQuestion not implemented")
 }
-func (UnimplementedQuestionServiceServer) GetAllQuestions(context.Context, *GetAllQuestionsRequest) (*GetAllQuestionsResponse, error) {
+func (UnimplementedQuestionServiceServer) GetAllQuestions(context.Context, *GetAllQuestionsRequest) (*GetAllQuestionsWithAnswersResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAllQuestions not implemented")
 }
-func (UnimplementedQuestionServiceServer) UpdateQuestion(context.Context, *UpdateQuestionRequest) (*QuestionResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method UpdateQuestion not implemented")
+func (UnimplementedQuestionServiceServer) UpdateQuestionWithAnswers(context.Context, *UpdateQuestionWithAnswersRequest) (*QuestionWithAnswersResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateQuestionWithAnswers not implemented")
 }
 func (UnimplementedQuestionServiceServer) DeleteQuestion(context.Context, *DeleteQuestionRequest) (*DeleteQuestionResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteQuestion not implemented")
@@ -480,20 +480,20 @@ func RegisterQuestionServiceServer(s grpc.ServiceRegistrar, srv QuestionServiceS
 	s.RegisterService(&QuestionService_ServiceDesc, srv)
 }
 
-func _QuestionService_CreateQuestion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateQuestionRequest)
+func _QuestionService_CreateQuestionWithAnswers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateQuestionWithAnswersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QuestionServiceServer).CreateQuestion(ctx, in)
+		return srv.(QuestionServiceServer).CreateQuestionWithAnswers(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: QuestionService_CreateQuestion_FullMethodName,
+		FullMethod: QuestionService_CreateQuestionWithAnswers_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QuestionServiceServer).CreateQuestion(ctx, req.(*CreateQuestionRequest))
+		return srv.(QuestionServiceServer).CreateQuestionWithAnswers(ctx, req.(*CreateQuestionWithAnswersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -534,20 +534,20 @@ func _QuestionService_GetAllQuestions_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _QuestionService_UpdateQuestion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateQuestionRequest)
+func _QuestionService_UpdateQuestionWithAnswers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateQuestionWithAnswersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QuestionServiceServer).UpdateQuestion(ctx, in)
+		return srv.(QuestionServiceServer).UpdateQuestionWithAnswers(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: QuestionService_UpdateQuestion_FullMethodName,
+		FullMethod: QuestionService_UpdateQuestionWithAnswers_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QuestionServiceServer).UpdateQuestion(ctx, req.(*UpdateQuestionRequest))
+		return srv.(QuestionServiceServer).UpdateQuestionWithAnswers(ctx, req.(*UpdateQuestionWithAnswersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -578,8 +578,8 @@ var QuestionService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*QuestionServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateQuestion",
-			Handler:    _QuestionService_CreateQuestion_Handler,
+			MethodName: "CreateQuestionWithAnswers",
+			Handler:    _QuestionService_CreateQuestionWithAnswers_Handler,
 		},
 		{
 			MethodName: "GetQuestion",
@@ -590,266 +590,12 @@ var QuestionService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _QuestionService_GetAllQuestions_Handler,
 		},
 		{
-			MethodName: "UpdateQuestion",
-			Handler:    _QuestionService_UpdateQuestion_Handler,
+			MethodName: "UpdateQuestionWithAnswers",
+			Handler:    _QuestionService_UpdateQuestionWithAnswers_Handler,
 		},
 		{
 			MethodName: "DeleteQuestion",
 			Handler:    _QuestionService_DeleteQuestion_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "quiz/v1/quiz.proto",
-}
-
-const (
-	AnswerService_CreateAnswer_FullMethodName  = "/quiz.v1.AnswerService/CreateAnswer"
-	AnswerService_GetAnswer_FullMethodName     = "/quiz.v1.AnswerService/GetAnswer"
-	AnswerService_GetAllAnswers_FullMethodName = "/quiz.v1.AnswerService/GetAllAnswers"
-	AnswerService_UpdateAnswer_FullMethodName  = "/quiz.v1.AnswerService/UpdateAnswer"
-	AnswerService_DeleteAnswer_FullMethodName  = "/quiz.v1.AnswerService/DeleteAnswer"
-)
-
-// AnswerServiceClient is the client API for AnswerService service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AnswerServiceClient interface {
-	CreateAnswer(ctx context.Context, in *CreateAnswerRequest, opts ...grpc.CallOption) (*AnswerResponse, error)
-	GetAnswer(ctx context.Context, in *GetAnswerRequest, opts ...grpc.CallOption) (*AnswerResponse, error)
-	GetAllAnswers(ctx context.Context, in *GetAllAnswersRequest, opts ...grpc.CallOption) (*GetAllAnswersResponse, error)
-	UpdateAnswer(ctx context.Context, in *UpdateAnswerRequest, opts ...grpc.CallOption) (*AnswerResponse, error)
-	DeleteAnswer(ctx context.Context, in *DeleteAnswerRequest, opts ...grpc.CallOption) (*DeleteAnswerResponse, error)
-}
-
-type answerServiceClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewAnswerServiceClient(cc grpc.ClientConnInterface) AnswerServiceClient {
-	return &answerServiceClient{cc}
-}
-
-func (c *answerServiceClient) CreateAnswer(ctx context.Context, in *CreateAnswerRequest, opts ...grpc.CallOption) (*AnswerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AnswerResponse)
-	err := c.cc.Invoke(ctx, AnswerService_CreateAnswer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *answerServiceClient) GetAnswer(ctx context.Context, in *GetAnswerRequest, opts ...grpc.CallOption) (*AnswerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AnswerResponse)
-	err := c.cc.Invoke(ctx, AnswerService_GetAnswer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *answerServiceClient) GetAllAnswers(ctx context.Context, in *GetAllAnswersRequest, opts ...grpc.CallOption) (*GetAllAnswersResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllAnswersResponse)
-	err := c.cc.Invoke(ctx, AnswerService_GetAllAnswers_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *answerServiceClient) UpdateAnswer(ctx context.Context, in *UpdateAnswerRequest, opts ...grpc.CallOption) (*AnswerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AnswerResponse)
-	err := c.cc.Invoke(ctx, AnswerService_UpdateAnswer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *answerServiceClient) DeleteAnswer(ctx context.Context, in *DeleteAnswerRequest, opts ...grpc.CallOption) (*DeleteAnswerResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteAnswerResponse)
-	err := c.cc.Invoke(ctx, AnswerService_DeleteAnswer_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// AnswerServiceServer is the server API for AnswerService service.
-// All implementations must embed UnimplementedAnswerServiceServer
-// for forward compatibility.
-type AnswerServiceServer interface {
-	CreateAnswer(context.Context, *CreateAnswerRequest) (*AnswerResponse, error)
-	GetAnswer(context.Context, *GetAnswerRequest) (*AnswerResponse, error)
-	GetAllAnswers(context.Context, *GetAllAnswersRequest) (*GetAllAnswersResponse, error)
-	UpdateAnswer(context.Context, *UpdateAnswerRequest) (*AnswerResponse, error)
-	DeleteAnswer(context.Context, *DeleteAnswerRequest) (*DeleteAnswerResponse, error)
-	mustEmbedUnimplementedAnswerServiceServer()
-}
-
-// UnimplementedAnswerServiceServer must be embedded to have
-// forward compatible implementations.
-//
-// NOTE: this should be embedded by value instead of pointer to avoid a nil
-// pointer dereference when methods are called.
-type UnimplementedAnswerServiceServer struct{}
-
-func (UnimplementedAnswerServiceServer) CreateAnswer(context.Context, *CreateAnswerRequest) (*AnswerResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method CreateAnswer not implemented")
-}
-func (UnimplementedAnswerServiceServer) GetAnswer(context.Context, *GetAnswerRequest) (*AnswerResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetAnswer not implemented")
-}
-func (UnimplementedAnswerServiceServer) GetAllAnswers(context.Context, *GetAllAnswersRequest) (*GetAllAnswersResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetAllAnswers not implemented")
-}
-func (UnimplementedAnswerServiceServer) UpdateAnswer(context.Context, *UpdateAnswerRequest) (*AnswerResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method UpdateAnswer not implemented")
-}
-func (UnimplementedAnswerServiceServer) DeleteAnswer(context.Context, *DeleteAnswerRequest) (*DeleteAnswerResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method DeleteAnswer not implemented")
-}
-func (UnimplementedAnswerServiceServer) mustEmbedUnimplementedAnswerServiceServer() {}
-func (UnimplementedAnswerServiceServer) testEmbeddedByValue()                       {}
-
-// UnsafeAnswerServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AnswerServiceServer will
-// result in compilation errors.
-type UnsafeAnswerServiceServer interface {
-	mustEmbedUnimplementedAnswerServiceServer()
-}
-
-func RegisterAnswerServiceServer(s grpc.ServiceRegistrar, srv AnswerServiceServer) {
-	// If the following call panics, it indicates UnimplementedAnswerServiceServer was
-	// embedded by pointer and is nil.  This will cause panics if an
-	// unimplemented method is ever invoked, so we test this at initialization
-	// time to prevent it from happening at runtime later due to I/O.
-	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
-		t.testEmbeddedByValue()
-	}
-	s.RegisterService(&AnswerService_ServiceDesc, srv)
-}
-
-func _AnswerService_CreateAnswer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateAnswerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnswerServiceServer).CreateAnswer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnswerService_CreateAnswer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnswerServiceServer).CreateAnswer(ctx, req.(*CreateAnswerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AnswerService_GetAnswer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAnswerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnswerServiceServer).GetAnswer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnswerService_GetAnswer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnswerServiceServer).GetAnswer(ctx, req.(*GetAnswerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AnswerService_GetAllAnswers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllAnswersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnswerServiceServer).GetAllAnswers(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnswerService_GetAllAnswers_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnswerServiceServer).GetAllAnswers(ctx, req.(*GetAllAnswersRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AnswerService_UpdateAnswer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateAnswerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnswerServiceServer).UpdateAnswer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnswerService_UpdateAnswer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnswerServiceServer).UpdateAnswer(ctx, req.(*UpdateAnswerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AnswerService_DeleteAnswer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteAnswerRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AnswerServiceServer).DeleteAnswer(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AnswerService_DeleteAnswer_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AnswerServiceServer).DeleteAnswer(ctx, req.(*DeleteAnswerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-// AnswerService_ServiceDesc is the grpc.ServiceDesc for AnswerService service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var AnswerService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "quiz.v1.AnswerService",
-	HandlerType: (*AnswerServiceServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "CreateAnswer",
-			Handler:    _AnswerService_CreateAnswer_Handler,
-		},
-		{
-			MethodName: "GetAnswer",
-			Handler:    _AnswerService_GetAnswer_Handler,
-		},
-		{
-			MethodName: "GetAllAnswers",
-			Handler:    _AnswerService_GetAllAnswers_Handler,
-		},
-		{
-			MethodName: "UpdateAnswer",
-			Handler:    _AnswerService_UpdateAnswer_Handler,
-		},
-		{
-			MethodName: "DeleteAnswer",
-			Handler:    _AnswerService_DeleteAnswer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
